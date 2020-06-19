@@ -135,7 +135,7 @@ export default function Home({ allPostsData }) {
 		  <Grid item>
 		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#7E9EF5" }} component={RouterLink} to="/">2</Button>
           <Typography variant='body2' align='center' >
-              Scheduled Maintenance
+              Active Maintenance
             </Typography>
           </Grid>
 				  <Grid item>
