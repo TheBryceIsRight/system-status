@@ -157,9 +157,6 @@ export default function Home({ allPostsData }) {
       <p>Experiencing a service disruption</p>
       <Grid container direction={'row'} spacing={1}>
       <Router>
-      <Grid item>
-        <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">United States</Button>
-      </Grid>
         <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">United States</Button>
       </Grid>
       <Grid item><Button startIcon={<Warning />} variant='outlined' style={{borderColor: '#FFA631', backgroundColor: '#FFA631', color: "#1A1B36" }} component={RouterLink} to="/">Mexico</Button>
