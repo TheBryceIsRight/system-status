@@ -128,30 +128,24 @@ export default function Home({ allPostsData }) {
       <Router>
 	      <Grid item>
 		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#FFA631" }} component={RouterLink} to="/">1</Button>
-      </Grid>
-		  <Grid item>
-		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#7E9EF5" }} component={RouterLink} to="/">2</Button>
-					</Grid>
-				  <Grid item>
-		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#2ABD91" }} component={RouterLink} to="/">3</Button>
-				  </Grid>
-      <Grid item xl={4} md={4} sm={4} xs={5}>
-        <Typography variant='body1' align='center' >
+          <Typography variant='body2' align='center' >
               Active Issues
             </Typography>
       </Grid>
-      <Grid item xl={4} md={4} sm={4} xs={5}>
-        <Typography variant='body1' align='center' >
-              Active Maintenance
-            </Typography>
-      </Grid>
-      <Grid item xl={4} md={4} sm={4} xs={5}>
-        <Typography variant='body1' align='center' >
+		  <Grid item>
+		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#7E9EF5" }} component={RouterLink} to="/">2</Button>
+          <Typography variant='body2' align='center' >
               Scheduled Maintenance
             </Typography>
-      </Grid>
-		</Router>
-  </Grid>
+          </Grid>
+				  <Grid item>
+		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#2ABD91" }} component={RouterLink} to="/">3</Button>
+				  <Typography variant='body2' align='center' >
+              Scheduled Maintenance
+            </Typography>
+          </Grid>
+      </Router>
+    </Grid>
       <Grid container direction={'row'} spacing={2}>
         <Grid item xl={4} md={4} sm={5} xs={6}>
         </Grid>
