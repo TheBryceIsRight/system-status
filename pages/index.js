@@ -159,7 +159,7 @@ export default function Home({ allPostsData }) {
       </section>
       <br></br>
       <h2>Regions</h2>
-      <h3>Converge</h3>
+      <h3>System 1</h3>
       <p>Experiencing a service disruption</p>
       <Grid container direction={'row'} spacing={1}>
       <Router>
@@ -178,7 +178,7 @@ export default function Home({ allPostsData }) {
 		</Router>
 	</Grid>	
     <br/>
-      <h3>Fusebox</h3>
+      <h3>System 2</h3>
       <p>All systems nominal</p>
       <Grid container direction={'row'} spacing={1}>
       <Router>
