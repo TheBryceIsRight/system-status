@@ -1,12 +1,67 @@
-import Head from 'next/head'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import Head from 'next/head';
+import styles from './layout.module.css';
+import { withStyles } from '@material-ui/core/styles';
+import utilStyles from '../styles/utils.module.css';
+import Link from 'next/link';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import BuildIcon from '@material-ui/icons/Build';
+import ErrorIcon from '@material-ui/icons/Error';
+import MenuIcon from '@material-ui/icons/Menu';
+import Grid from '@material-ui/core/Grid'
+import MenuDemo from '../components/MenuDemo';
+import DrawerDemo from './DrawerDemo'; 
 
-const name = 'Bryce Watson'
-export const siteTitle = 'Next.js Demo'
+const name = 'System Status';
+export const siteTitle = 'Next.js Demo';
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
 
 export default function Layout({ children, home }) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -27,29 +82,16 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         {home ? (
           <>
-            <img
-              src="/images/profile.png"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <div className="App">
+            <DrawerDemo/>  
+            </div>
           </>
         ) : (
           <>
-            <Link href="/">
-              <a>
-                <img
-                  src="/images/profile.png"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
+            <div className="App">
+            <DrawerDemo/>  
+            </div>
+            
           </>
         )}
       </header>
