@@ -101,7 +101,7 @@ export default function Home({ allPostsData }) {
       <section className={utilStyles.headingMd}>
         <br/>
         <Typography variant='body1'>
-          Hi, I’m <strong>Bryce</strong>. I’m a software engineer and an UX Designer.
+          Hi, I’m <strong>Bryce</strong>. I’m a software engineer and a user experience designer.
         </Typography>
         <br/>
       </section>

@@ -22,7 +22,23 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import { MemoryRouter as Router } from 'react-router'
+import { Link as RouterLink } from 'react-router-dom'
+import Link from 'next/link';
+
+import clsx from 'clsx';
+  
+
 const useStyles = makeStyles((theme) => ({
+    list: {
+        width: 250,
+      },
+      fullList: {
+        width: 'auto',
+      },
+
     grow: {
       flexGrow: 1,
     },
@@ -167,21 +183,81 @@ export default function DrawerDemo() {
         </MenuItem>
         </Menu>
     );
+
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+    });
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+        }
+
+        setState({ ...state, [anchor]: open });
+    };
+
+    const list = (anchor) => (
+        <div
+        className={clsx(classes.list, {
+            [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+        })}
+        role="presentation"
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
+        >
+        <List>
+            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem button key={text}>
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+            </ListItem>
+            ))}
+        </List>
+        <Divider />
+        <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            <ListItem button key={text}>
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+            </ListItem>
+            ))}
+        </List>
+        </div>
+    );
+
         return (  
             <div className={classes.grow}>
             <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
               <Toolbar>
+                <React.Fragment>
                 <IconButton
-                  edge="start"
-                  className={classes.menuButton}
-                  color="inherit"
-                  aria-label="open drawer"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Typography className={classes.title} variant="h6" noWrap>
-                  System Status
-                </Typography>
+                    edge="start"
+                    className={classes.menuButton}
+                    color="inherit"
+                    aria-label="abrir menu"
+                    onClick={toggleDrawer('left', true)}
+                    > 
+                <MenuIcon />
+            </IconButton>   
+                <Drawer 
+                    anchor={'left'} 
+                    open={state['left']} 
+                    onClose={toggleDrawer('left', false)}>{list('left')}
+                </Drawer>
+                </React.Fragment>
+                
+
+                <Router>
+                    <Link href='/'>
+                    <Typography className={classes.title} variant="h6" noWrap component={RouterLink} to="/">
+                        System Status
+                        </Typography>
+                    </Link>
+                </Router>
+                
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>
                     <SearchIcon />
@@ -197,13 +273,13 @@ export default function DrawerDemo() {
                 </div>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-                  <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
+                  <IconButton aria-label="show 0 new mails" color="inherit">
+                    <Badge badgeContent={0} color="secondary">
                       <MailIcon />
                     </Badge>
                   </IconButton>
-                  <IconButton aria-label="show 17 new notifications" color="inherit">
-                    <Badge badgeContent={17} color="secondary">
+                  <IconButton aria-label="show 1 new notifications" color="inherit">
+                    <Badge badgeContent={1} color="secondary">
                       <NotificationsIcon />
                     </Badge>
                   </IconButton>
