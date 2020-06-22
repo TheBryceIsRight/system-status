@@ -14,7 +14,6 @@ import BuildIcon from '@material-ui/icons/Build';
 import ErrorIcon from '@material-ui/icons/Error';
 import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid'
-import MenuDemo from '../components/MenuDemo';
 import DrawerDemo from './DrawerDemo'; 
 
 const name = 'System Status';
