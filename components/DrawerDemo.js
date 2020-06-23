@@ -295,10 +295,15 @@ export default function DrawerDemo() {
                 </React.Fragment>
                 
 
-
+                  <Link href='/'>
+                  <a>
                     <Typography className={classes.title} variant="h6">
-                        Status
-                        </Typography>
+                      Status
+                    </Typography>
+                  </a>
+                  
+                  </Link>
+                    
 
                 
                 <div className={classes.search}>
