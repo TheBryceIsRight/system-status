@@ -15,6 +15,9 @@ import ErrorIcon from '@material-ui/icons/Error';
 import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid'
 import DrawerDemo from './DrawerDemo';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const name = 'System Status';
 export const siteTitle = 'Next.js Demo';

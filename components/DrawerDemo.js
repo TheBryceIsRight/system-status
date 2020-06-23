@@ -29,7 +29,16 @@ import { Link as RouterLink } from 'react-router-dom'
 import Link from 'next/link';
 
 import clsx from 'clsx';
-  
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import BuildIcon from '@material-ui/icons/Build';
+import ErrorIcon from '@material-ui/icons/Error';
+
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import UpdateIcon from '@material-ui/icons/Update';
+import PublicIcon from '@material-ui/icons/Public';
+import Flag from 'react-world-flags'  
 
 const useStyles = makeStyles((theme) => ({
     list: {
@@ -128,6 +137,7 @@ export default function DrawerDemo() {
     };
 
     const menuId = 'primary-search-account-menu';
+    
     const renderMenu = (
         <Menu
         anchorEl={anchorEl}
@@ -138,8 +148,9 @@ export default function DrawerDemo() {
         open={isMenuOpen}
         onClose={handleMenuClose}
         >
+
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
         </Menu>
     );
 
@@ -155,16 +166,8 @@ export default function DrawerDemo() {
         onClose={handleMobileMenuClose}
         >
         <MenuItem>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-            </Badge>
-            </IconButton>
-            <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-            <IconButton aria-label="show 11 new notifications" color="inherit">
-            <Badge badgeContent={11} color="secondary">
+            <IconButton aria-label="show 1 new notifications" color="inherit">
+            <Badge badgeContent={1} color="secondary">
                 <NotificationsIcon />
             </Badge>
             </IconButton>
@@ -189,7 +192,13 @@ export default function DrawerDemo() {
         left: false,
         bottom: false,
         right: false,
+        checkedA: true,
+        checkedB: true,
     });
+
+    const handleChange = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+      };
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -209,21 +218,54 @@ export default function DrawerDemo() {
         onKeyDown={toggleDrawer(anchor, false)}
         >
         <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+            <ListItem button>
+                <ListItemIcon><AssessmentIcon/></ListItemIcon>
+                <ListItemText primary='All Systems' />
             </ListItem>
-            ))}
+            <ListItem button>
+                <ListItemIcon><ErrorIcon/></ListItemIcon>
+                <ListItemText primary='Active Issues' />
+            </ListItem>
+            <ListItem button>
+                <ListItemIcon><BuildIcon/></ListItemIcon>
+                <ListItemText primary='Active Maintenance' />
+            </ListItem>
+            <ListItem button>
+                <ListItemIcon><UpdateIcon/>
+                </ListItemIcon>
+                <ListItemText primary='Scheduled Maintenance' />
+            </ListItem>
+            
         </List>
         <Divider />
         <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
+            <ListItem button>
+                <ListItemIcon><Flag code={ 'CA' } height='14' />
+                </ListItemIcon>
+                <ListItemText primary='Canada' />
             </ListItem>
-            ))}
+            <ListItem button>
+                <ListItemIcon><PublicIcon/></ListItemIcon>
+                <ListItemText primary='Europe' />
+            </ListItem>
+            <ListItem button>
+                <ListItemIcon><Flag code={ 'MX' } height='14'/></ListItemIcon>
+                <ListItemText primary='Mexico' />
+            </ListItem>
+            <ListItem button>
+                <ListItemIcon><Flag code={ 'US' } height='14'/>
+                </ListItemIcon>
+                <ListItemText primary='United States' />
+            </ListItem>
+        </List>
+        <Divider />
+        <List>
+            <ListItem>
+                <ListItemIcon><FormControlLabel
+                control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
+                /></ListItemIcon>
+                <ListItemText>Dark Mode</ListItemText>
+            </ListItem>
         </List>
         </div>
     );
@@ -273,11 +315,6 @@ export default function DrawerDemo() {
                 </div>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-                  <IconButton aria-label="show 0 new mails" color="inherit">
-                    <Badge badgeContent={0} color="secondary">
-                      <MailIcon />
-                    </Badge>
-                  </IconButton>
                   <IconButton aria-label="show 1 new notifications" color="inherit">
                     <Badge badgeContent={1} color="secondary">
                       <NotificationsIcon />
