@@ -18,6 +18,14 @@ import DrawerDemo from './DrawerDemo';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import ThumbUp from '@material-ui/icons/ThumbUp'
+import ThumbDown from '@material-ui/icons/ThumbDown'
+import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown'
+import { MemoryRouter as Router } from 'react-router'
+import { Link as RouterLink } from 'react-router-dom'
+import Copyright from '../components/copyright';
+
+
 
 const name = 'System Status';
 export const siteTitle = 'Next.js Demo';
@@ -105,6 +113,29 @@ export default function Layout({ children, home }) {
           <Link href="/">
             <a>← Back to home</a>
           </Link>
+          <br/>
+          <br/>
+          <Router>
+          <Grid container spacing={1}  direction="row" alignItems="center">
+            <Grid item>
+              <ThumbsUpDown/>
+            </Grid>
+            <Grid item>
+              <h3>Was this page helpful?</h3>
+            </Grid>
+          </Grid>
+          <Grid container spacing={4} direction="row" alignItems="center">
+            <Grid item>
+              <Button startIcon={<ThumbUp />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Yes</Button>
+              </Grid>
+            <Grid item>
+              <Button startIcon={<ThumbDown />} variant='text' style={{borderColor: '#FFE4BD', color: "#FFFFFF" }} component={RouterLink} to="/">No</Button>
+              </Grid>
+          </Grid>
+          <br/>
+          
+          </Router>
+          <Copyright />
         </div>
         
       )}

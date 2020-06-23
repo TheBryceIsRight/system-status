@@ -29,14 +29,15 @@ import Checkbox from '../node_modules/@material-ui/core/Checkbox'
 import { orange } from '../node_modules/@material-ui/core/colors'
 import { green } from '../node_modules/@material-ui/core/colors'
 import CheckCircle from '@material-ui/icons/CheckCircle'
-import ThumbUp from '@material-ui/icons/ThumbUp'
-import ThumbDown from '@material-ui/icons/ThumbDown'
-import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown'
+
 import Warning from '@material-ui/icons/Warning'
 import Error from '@material-ui/icons/Error'
 import Build from '@material-ui/icons/Build';
 import dynamic from 'next/dynamic';
 import Copyright from '../components/copyright';
+import ThumbUp from '@material-ui/icons/ThumbUp'
+import ThumbDown from '@material-ui/icons/ThumbDown'
+import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown'
 
 
 const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
@@ -192,29 +193,28 @@ export default function Home({ allPostsData }) {
 
     <br/>
     <br/>
+    
     <Router>
-    <Grid container spacing={1}  direction="row" alignItems="center">
-      <Grid item>
-        <ThumbsUpDown/>
-      </Grid>
-      <Grid item>
-        <h3>Was this page helpful?</h3>
-      </Grid>
-    </Grid>
-    <Grid container spacing={4} direction="row" alignItems="center">
-      <Grid item>
-        <Button startIcon={<ThumbUp />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Yes</Button>
-        </Grid>
-      <Grid item>
-        <Button startIcon={<ThumbDown />} variant='text' style={{borderColor: '#FFE4BD', color: "#FFFFFF" }} component={RouterLink} to="/">No</Button>
-        </Grid>
-    </Grid>
-    <br/>
-    <br/>
-    
-    </Router>
-    <Copyright />
-    
+          <Grid container spacing={1}  direction="row" alignItems="center">
+            <Grid item>
+              <ThumbsUpDown/>
+            </Grid>
+            <Grid item>
+              <h3>Was this page helpful?</h3>
+            </Grid>
+          </Grid>
+          <Grid container spacing={4} direction="row" alignItems="center">
+            <Grid item>
+              <Button startIcon={<ThumbUp />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Yes</Button>
+              </Grid>
+            <Grid item>
+              <Button startIcon={<ThumbDown />} variant='text' style={{borderColor: '#FFE4BD', color: "#FFFFFF" }} component={RouterLink} to="/">No</Button>
+              </Grid>
+          </Grid>
+          <br/>
+          
+          </Router>
+          <Copyright />
    
 </Layout>
   )
