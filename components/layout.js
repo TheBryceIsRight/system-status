@@ -311,7 +311,11 @@ export default function Layout({ children, home }) {
               </ListItemIcon>
               <ListItemText primary="Privacy &amp; Cookie Policy" />
             </ListItem>
+            
           </List>
+          <Divider />
+          <br/>
+          <br/>
           <Copyright />
         </div>
         
