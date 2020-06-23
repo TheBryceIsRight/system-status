@@ -41,8 +41,12 @@ import PublicIcon from '@material-ui/icons/Public';
 import Flag from 'react-world-flags'  
 
 const useStyles = makeStyles((theme) => ({
+    body: {
+      margin:0,
+    },
+
     list: {
-        width: 250,
+        width: 'auto',
       },
       fullList: {
         width: 'auto',
@@ -52,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(2)
     },
     title: {
       display: 'none',
@@ -68,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: fade(theme.palette.common.white, 0.25),
       },
       marginRight: theme.spacing(2),
-      marginLeft: theme.spacing(2),
+      marginLeft: 0,
       width: '100%',
       [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(3),
@@ -76,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     searchIcon: {
-      padding: theme.spacing(0, 2),
+      padding: theme.spacing(2),
       height: '100%',
       position: 'absolute',
       pointerEvents: 'none',
@@ -141,10 +145,10 @@ export default function DrawerDemo() {
     const renderMenu = (
         <Menu
         anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         id={menuId}
         keepMounted
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
         open={isMenuOpen}
         onClose={handleMenuClose}
         >
@@ -276,10 +280,9 @@ export default function DrawerDemo() {
               <Toolbar>
                 <React.Fragment>
                 <IconButton
-                    edge="start"
                     className={classes.menuButton}
                     color="inherit"
-                    aria-label="abrir menu"
+                    aria-label="open menu"
                     onClick={toggleDrawer('left', true)}
                     > 
                 <MenuIcon />
@@ -292,13 +295,11 @@ export default function DrawerDemo() {
                 </React.Fragment>
                 
 
-                <Router>
-                    <Link href='/'>
-                    <Typography className={classes.title} variant="h6" noWrap component={RouterLink} to="/">
-                        System Status
+
+                    <Typography className={classes.title} variant="h6">
+                        Status
                         </Typography>
-                    </Link>
-                </Router>
+
                 
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>

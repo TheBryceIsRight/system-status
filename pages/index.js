@@ -35,9 +35,10 @@ import Error from '@material-ui/icons/Error'
 import Build from '@material-ui/icons/Build';
 import dynamic from 'next/dynamic';
 import Copyright from '../components/copyright';
-import ThumbUp from '@material-ui/icons/ThumbUp'
-import ThumbDown from '@material-ui/icons/ThumbDown'
-import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown'
+import ThumbUp from '@material-ui/icons/ThumbUp';
+import ThumbDown from '@material-ui/icons/ThumbDown';
+import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown';
+import { LocalizeProvider } from "react-localize-redux";
 
 
 const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
@@ -93,6 +94,7 @@ const theme = createMuiTheme({
 
 
 export default function Home({ allPostsData }) {
+  
   return (
     <Layout home>
       <Head>
@@ -100,6 +102,10 @@ export default function Home({ allPostsData }) {
       </Head>
      
       <section className={utilStyles.headingMd}>
+        <br/>
+        <Typography variant='h2'> 
+          React Demo
+        </Typography>
         <br/>
         <Typography variant='body1'>
           Hi, I’m <strong>Bryce</strong>. I’m a software engineer and a user experience designer.

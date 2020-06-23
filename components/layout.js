@@ -24,6 +24,7 @@ import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown'
 import { MemoryRouter as Router } from 'react-router'
 import { Link as RouterLink } from 'react-router-dom'
 import Copyright from '../components/copyright';
+import { LocalizeProvider } from "react-localize-redux";
 
 
 
@@ -91,7 +92,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header>
         {home ? (
           <>
             <div className="App">

@@ -29,3 +29,7 @@ img {
   max-width: 100%;
   display: block;
 }
+
+h1 {
+  font-size: large;
+}
