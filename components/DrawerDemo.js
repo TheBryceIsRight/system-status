@@ -240,7 +240,7 @@ export default function DrawerDemo() {
         <Divider />
         <List>
             <ListItem button>
-                <ListItemIcon><Flag code={ 'CA' } height='14' />
+                <ListItemIcon><PublicIcon/>
                 </ListItemIcon>
                 <ListItemText primary='Canada' />
             </ListItem>
@@ -249,11 +249,11 @@ export default function DrawerDemo() {
                 <ListItemText primary='Europe' />
             </ListItem>
             <ListItem button>
-                <ListItemIcon><Flag code={ 'MX' } height='14'/></ListItemIcon>
+                <ListItemIcon><PublicIcon/></ListItemIcon>
                 <ListItemText primary='Mexico' />
             </ListItem>
             <ListItem button>
-                <ListItemIcon><Flag code={ 'US' } height='14'/>
+                <ListItemIcon><PublicIcon/>
                 </ListItemIcon>
                 <ListItemText primary='United States' />
             </ListItem>
