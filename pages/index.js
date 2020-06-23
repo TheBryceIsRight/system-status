@@ -340,7 +340,7 @@ export default function Home({ allPostsData }) {
           component="nav" 
           aria-label="social media links"
           subheader={
-            <ListSubheader component="div" id="sales-list-subheader">
+            <ListSubheader component="div" id="scocial-media-list-subheader">
               Social Media
             </ListSubheader>
           }
