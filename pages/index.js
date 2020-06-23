@@ -58,6 +58,11 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import PolicyIcon from '@material-ui/icons/Policy';
+import PublicIcon from '@material-ui/icons/Public';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import StarBorder from '@material-ui/icons/StarBorder';
 
 
 const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
@@ -73,12 +78,14 @@ const LinkBehavior = React.forwardRef((props, ref) => (
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    color: theme.status.success,
-    '&$checked': {
-      color: theme.status.success,
-    },
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
   },
   checked: {},
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
 
 function CustomCheckbox() {
@@ -113,7 +120,14 @@ const theme = createMuiTheme({
 
 
 export default function Home({ allPostsData }) {
-  
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+
   return (
     <Layout home>
       <Head>
@@ -122,7 +136,7 @@ export default function Home({ allPostsData }) {
      
       <section className={utilStyles.headingMd}>
         <br/>
-        <Typography variant='h2'> 
+        <Typography variant='h3'> 
           React Demo
         </Typography>
         <br/>
@@ -218,7 +232,140 @@ export default function Home({ allPostsData }) {
 
     <br/>
     <br/>
-    
+
+    {/* Begin Countries List
+    */}
+    <h2>Countries</h2>
+      <List 
+          component="nav" 
+          aria-label="country list"
+          >
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <Build style={{ color: "#7E9EF5" }}/>
+              </ListItemIcon>
+              <ListItemText primary="Canada" secondary="1 system undergoing maintenance" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 1 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 2 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <Build style={{ color: "#7E9EF5" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 3 is undgergoing maintenance" />
+                </ListItem>
+              </List>
+            </Collapse>
+
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <CheckCircle style={{color: "#B1ECE2" }}/>
+              </ListItemIcon>
+              <ListItemText primary="Mexico" secondary="All systems nominal" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 1 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 2 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 3 is available" />
+                </ListItem>
+              </List>
+            </Collapse>
+            
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <CheckCircle style={{color: "#B1ECE2" }}/>
+              </ListItemIcon>
+              <ListItemText primary="Europe" secondary="All systems nominal" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 1 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 2 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 3 is available" />
+                </ListItem>
+              </List>
+            </Collapse>
+
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <CheckCircle style={{color: "#B1ECE2" }}/>
+              </ListItemIcon>
+              <ListItemText primary="United States" secondary="All systems nominal" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 1 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 2 is available" />
+                </ListItem>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  </ListItemIcon>
+                  <ListItemText primary="System 3 is available" />
+                </ListItem>
+              </List>
+            </Collapse>
+
+        </List>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+          
     <Router>
           <Grid container spacing={1}  direction="row" alignItems="center">
             <Grid item>
