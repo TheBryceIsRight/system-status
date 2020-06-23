@@ -530,6 +530,9 @@ export default function Home({ allPostsData }) {
               <ListItemText primary="Privacy &amp; Cookie Policy" />
             </ListItem>
           </List>
+          <Divider />
+          <br/>
+          <br/>
           <Copyright />
    
 </Layout>
