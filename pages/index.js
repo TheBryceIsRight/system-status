@@ -63,7 +63,8 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
-
+import Skeleton from '@material-ui/lab/Skeleton';
+import PropTypes from 'prop-types';
 
 
 
@@ -121,7 +122,7 @@ const theme = createMuiTheme({
 
 
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }, props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
@@ -129,6 +130,7 @@ export default function Home({ allPostsData }) {
     setOpen(!open);
   };
 
+  const { loading = false } = props;
 
   return (
     <Layout home>
@@ -138,17 +140,20 @@ export default function Home({ allPostsData }) {
      
       <section className={utilStyles.headingMd}>
         <br/>
-        <Typography variant='h3'> 
-          React Demo
+        <Typography variant="h3">
+          {loading ? <Skeleton /> : 'React Demo'}
         </Typography>
         <br/>
         <Typography variant='body1'>
-          Hi, I’m <strong>Bryce</strong>. I’m a software engineer and a user experience designer.
+        {loading ? <Skeleton /> : 'Hi, I’m Bryce. I’m a software engineer and a user experience designer.'}
         </Typography>
         <br/>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+      <Typography variant="h5">
+        {loading ? <Skeleton /> : 'Blog'}
+      </Typography>
+      <br/>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
@@ -164,8 +169,11 @@ export default function Home({ allPostsData }) {
         </ul>
       </section>
       <section>
-      <br></br>
-      <h2>Summary</h2>
+      <br/>
+      <Typography variant="h5">
+        {loading ? <Skeleton /> : 'Summary'}
+      </Typography>
+      <br/>
       <Grid container direction={'row'} spacing={2} justify='space-evenly' alignItems='center'>
       <Router>
 	      <Grid item>
@@ -245,8 +253,13 @@ export default function Home({ allPostsData }) {
       </Grid>
       </section>
       <br></br>
-      <h2>Regions</h2>
-      <h3>System 1</h3>
+      <Typography variant="h5">
+        {loading ? <Skeleton /> : 'Regions'}
+      </Typography>
+      <br/>
+      <Typography variant="h6">
+        {loading ? <Skeleton /> : 'System 1'}
+      </Typography>
       <p>Experiencing a service disruption</p>
       <Grid container direction={'row'} spacing={1}>
       <Router>
@@ -262,7 +275,9 @@ export default function Home({ allPostsData }) {
 		</Router>
 	</Grid>	
     <br/>
-      <h3>System 2</h3>
+    <Typography variant="h6">
+        {loading ? <Skeleton /> : 'System 2'}
+      </Typography>
       <p>All systems nominal</p>
       <Grid container direction={'row'} spacing={1}>
       <Router>
@@ -275,11 +290,16 @@ export default function Home({ allPostsData }) {
         <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">Europe</Button>
         </Grid>
       </Router>
-    </Grid>	
+    </Grid>
+    <br/>
+    <br/>
+	
 
+    <Typography variant="h5">
+        {loading ? <Skeleton /> : 'Locations'}
+      </Typography>
     <br/>
-    <br/>
-    <h2>Locations</h2>
+    
     
     <DynamicComponentWithNoSSR />
 
@@ -288,7 +308,9 @@ export default function Home({ allPostsData }) {
 
     {/* Begin Countries List
     */}
-    <h2>Countries</h2>
+    <Typography variant="h5">
+        {loading ? <Skeleton /> : 'Countries'}
+      </Typography>
       <List 
           component="nav" 
           aria-label="country list"
@@ -425,7 +447,9 @@ export default function Home({ allPostsData }) {
               <ThumbsUpDown/>
             </Grid>
             <Grid item>
-              <h3>Was this page helpful?</h3>
+            <Typography variant="h6">
+              {loading ? <Skeleton /> : 'Was this page helpful?'}
+            </Typography>
             </Grid>
           </Grid>
           <Grid container spacing={4} direction="row" alignItems="center">
@@ -587,7 +611,6 @@ export default function Home({ allPostsData }) {
           <br/>
           <br/>
           <Copyright />
-   
 </Layout>
   )
 }
