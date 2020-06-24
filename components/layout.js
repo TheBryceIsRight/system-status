@@ -172,6 +172,7 @@ export default function Layout({ children, home }) {
           
           <br/>
           <Divider/>
+          <Router>
           <List 
           component="nav" 
           aria-label="company links"
@@ -218,6 +219,9 @@ export default function Layout({ children, home }) {
               <ListItemText primary="Contact Us" />
             </ListItem>
           </List>
+
+          </Router>
+          
           <Divider />
 
           <List 

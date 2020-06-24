@@ -221,24 +221,38 @@ export default function DrawerDemo() {
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
         >
+        <Router>
         <List>
             <ListItem button>
                 <ListItemIcon><AssessmentIcon/></ListItemIcon>
                 <ListItemText primary='All Systems' />
             </ListItem>
+            <Link
+            href="/activeIssues"
+            passHref>
             <ListItem button>
                 <ListItemIcon><ErrorIcon/></ListItemIcon>
                 <ListItemText primary='Active Issues' />
             </ListItem>
+            </Link>
+            <Link
+            href="/activeMaintenance"
+            passHref>
             <ListItem button>
                 <ListItemIcon><BuildIcon/></ListItemIcon>
                 <ListItemText primary='Active Maintenance' />
             </ListItem>
+            </Link>
+            <Link
+            href="/scheduledMaintenance"
+            passHref>
             <ListItem button>
                 <ListItemIcon><UpdateIcon/>
                 </ListItemIcon>
                 <ListItemText primary='Scheduled Maintenance' />
             </ListItem>
+            </Link>
+            
             
         </List>
         <Divider />
@@ -271,6 +285,7 @@ export default function DrawerDemo() {
                 <ListItemText>Dark Mode</ListItemText>
             </ListItem>
         </List>
+        </Router>
         </div>
     );
 
