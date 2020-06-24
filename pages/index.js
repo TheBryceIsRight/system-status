@@ -65,6 +65,8 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 
 
+
+
 const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
   ssr: false
 });
@@ -167,19 +169,70 @@ export default function Home({ allPostsData }) {
       <Grid container direction={'row'} spacing={2} justify='space-evenly' alignItems='center'>
       <Router>
 	      <Grid item>
-		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#FFA631" }} component={RouterLink} to="/about">1</Button>
+        {/* How to pass a dynamically generated link through a material ui button
+        <Link
+          href={'/static/[dynamic]'}
+          as={'/static/' + someJsString}
+          passHref>
+          <Button
+              component="a">
+              // other component ...
+          </Button>
+        </Link>
+        
+        */}
+
+        <Link
+            href="/activeIssues"
+            passHref>
+          <Button variant="outlined"
+          style = 
+              {{ fontSize: '100px', 
+                 maxWidth: '180px', 
+                 maxHeight: '180px', 
+                 minWidth: '180px', 
+                 minHeight: '180px', 
+                 borderColor: '#6669A8', 
+                 color: "#FFA631" }}>1</Button>
+                 </Link>
           <Typography variant='body2' align='center' >
-              Active Issues
-            </Typography>
+            Active Issues
+          </Typography>
       </Grid>
 		  <Grid item>
-		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#7E9EF5" }} component={RouterLink} to="/">2</Button>
+      <Link
+            href="/activeMaintenance"
+            passHref>
+          <Button variant="outlined" 
+          style = 
+            {{ fontSize: '100px', 
+               maxWidth: '180px', 
+               maxHeight: '180px', 
+               minWidth: '180px', 
+               minHeight: '180px', 
+               borderColor: '#6669A8', 
+               color: "#7E9EF5" }}>2</Button>
+              </Link>
           <Typography variant='body2' align='center' >
-              Active Maintenance
-            </Typography>
+            Active Maintenance
+          </Typography>
           </Grid>
 				  <Grid item>
-		      <Button variant="outlined" style={{ fontSize: '100px', maxWidth: '180px', maxHeight: '180px', minWidth: '180px', minHeight: '180px', borderColor: '#6669A8', color: "#2ABD91" }} component={RouterLink} to="/">3</Button>
+          <Link
+            href="/scheduledMaintenance"
+            passHref>
+          <Button 
+          component ='a'
+          variant="outlined"
+          style = 
+          {{ fontSize: '100px', 
+             maxWidth: '180px', 
+             maxHeight: '180px', 
+             minWidth: '180px', 
+             minHeight: '180px', 
+             borderColor: '#6669A8', 
+             color: "#2ABD91" }}>3</Button>
+               </Link>
 				  <Typography variant='body2' align='center' >
               Scheduled Maintenance
             </Typography>

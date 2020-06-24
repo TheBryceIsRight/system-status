@@ -31,6 +31,9 @@ const theme = createMuiTheme({
     background: {
       default: '#1A1B36',
     },
+    action: {
+      hover: '#2C2E57',
+    }
   },
   
 });

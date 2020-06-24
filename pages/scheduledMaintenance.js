@@ -13,4 +13,4 @@ function ScheduledMaintenance() {
     </Layout>
 }
 
-export default About
+export default ScheduledMaintenance

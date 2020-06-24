@@ -141,12 +141,15 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-          <br/>
-          <br/>
           <Router>
+          <Link
+            href="/"
+            passHref>
+            <Button startIcon={<ArrowBackIcon />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Back to Home</Button>
+            </Link>
+          <br/>
+          <br/>
+          
           <Grid container spacing={1}  direction="row" alignItems="center">
             <Grid item>
               <ThumbsUpDown/>
