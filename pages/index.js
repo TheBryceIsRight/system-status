@@ -65,8 +65,30 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 import Skeleton from '@material-ui/lab/Skeleton';
 import PropTypes from 'prop-types';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 
 
+const labels = {
+  0.5: 'Useless',
+  1: 'Useless+',
+  1.5: 'Poor',
+  2: 'Poor+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Good',
+  4: 'Good+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+};
+
+const useStyle1 = makeStyles({
+  root: {
+    width: 200,
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
 
 const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
   ssr: false
@@ -125,6 +147,9 @@ const theme = createMuiTheme({
 export default function Home({ allPostsData }, props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [value, setValue] = React.useState(3);
+  const [hover, setHover] = React.useState(-1);
+  const classes1 = useStyle1();
 
   const handleClick = () => {
     setOpen(!open);
@@ -475,23 +500,30 @@ export default function Home({ allPostsData }, props) {
         <br/>
           
     <Router>
-          <Grid container spacing={1}  direction="row" alignItems="center">
+          <Grid container spacing={1}  direction="column" alignItems="left">
             <Grid item>
-              <ThumbsUpDown/>
-            </Grid>
-            <Grid item>
+            <ThumbsUpDown/>
             <Typography variant="h6">
               {loading ? <Skeleton /> : 'Was this page helpful?'}
             </Typography>
+            
             </Grid>
-          </Grid>
-          <Grid container spacing={4} direction="row" alignItems="center">
             <Grid item>
-              <Button startIcon={<ThumbUp />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Yes</Button>
-              </Grid>
-            <Grid item>
-              <Button startIcon={<ThumbDown />} variant='text' style={{borderColor: '#FFE4BD', color: "#FFFFFF" }} component={RouterLink} to="/">No</Button>
-              </Grid>
+            <div className={classes1.root}>
+              <Rating
+                name="hover-feedback"
+                value={value}
+                precision={0.5}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+                onChangeActive={(event, newHover) => {
+                  setHover(newHover);
+                }}
+              />
+              {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+            </div>
+            </Grid>
           </Grid>
           <br/>
           <br/>
