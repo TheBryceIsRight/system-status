@@ -1,17 +1,15 @@
 import CustomTable from '../components/customTable';
 import Layout, { siteTitle } from '../components/layout'
 import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Skeleton from '@material-ui/lab/Skeleton';
+import dynamic from 'next/dynamic';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { makeStyles } from '@material-ui/core/styles';
-import PublicIcon from '@material-ui/icons/Public';
-import BuildIcon from '@material-ui/icons/Build';
-import UpdateIcon from '@material-ui/icons/Update';
-
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -25,10 +23,18 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+function handleClick(event) {
+    event.preventDefault();
+    console.info('You clicked a breadcrumb.');
+  }
 
-function ScheduledMaintenance(props) {
+function PrototypeDetails(props) {
     const { loading = false } = props;
+    const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
+        ssr: false
+      });
     const classes = useStyles();
+
 
     return <Layout>
         <br/>
@@ -37,18 +43,26 @@ function ScheduledMaintenance(props) {
               <HomeIcon className={classes.icon} />
               Home
             </Link>
+            <Link
+              color="inherit"
+              href="/activeIssues"
+              className={classes.link}
+            >
+              <ErrorIcon className={classes.icon} />
+              Active Issues
+            </Link>
             <Typography color="textPrimary" className={classes.link}>
-              <UpdateIcon className={classes.icon} />
-                Scheduled Maintenance
+              <DescriptionIcon className={classes.icon} />
+              Details
             </Typography>
           </Breadcrumbs>
-        <br/>
+          <br/>  
         <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Scheduled Maintenance'}
+            {loading ? <Skeleton /> : 'Details (demo)'}
         </Typography>
         <br/>
-        <CustomTable/>
+        <DynamicComponentWithNoSSR/>
     </Layout>
 }
 
-export default ScheduledMaintenance
+export default PrototypeDetails

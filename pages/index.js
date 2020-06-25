@@ -32,7 +32,7 @@ import CheckCircle from '@material-ui/icons/CheckCircle'
 
 import Warning from '@material-ui/icons/Warning'
 import Error from '@material-ui/icons/Error'
-import Build from '@material-ui/icons/Build';
+import BuildIcon from '@material-ui/icons/Build';
 import dynamic from 'next/dynamic';
 import Copyright from '../components/copyright';
 import ThumbUp from '@material-ui/icons/ThumbUp';
@@ -315,14 +315,31 @@ export default function Home({ allPostsData }, props) {
       <Grid container direction={'row'} spacing={1}>
       <Router>
         
-        <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">United States</Button>
-      </Grid>
-      <Grid item><Button startIcon={<Warning />} variant='outlined' style={{borderColor: '#FFA631', backgroundColor: '#FFA631', color: "#1A1B36" }} component={RouterLink} to="/">Mexico</Button>
+        <Grid item>
+          <Link
+            href="/unitedStates"
+            passHref>
+          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>United States</Button>
+          </Link>
       </Grid>
       <Grid item>
-        <Button startIcon={<Error />} variant='outlined' style={{borderColor: '#FFA631', color: "#FFA631" }} component={RouterLink} to="/">Canada</Button>
+      <Link
+            href="/mexico"
+            passHref>
+        <Button startIcon={<Warning />} variant='outlined' style={{borderColor: '#FFA631', backgroundColor: '#FFA631', color: "#1A1B36" }}>Mexico</Button>
+      </Link>
       </Grid>
-      <Grid item><Button startIcon={<Build />} variant='outlined' style={{borderColor: '#7E9EF5', backgroundColor: '#7E9EF5', color: "#1A1B36" }} component={RouterLink} to="/">Europe</Button>
+      <Grid item>
+      <Link
+            href="/canada"
+            passHref>
+        <Button startIcon={<Error />} variant='outlined' style={{borderColor: '#FFA631', color: "#FFA631" }} component={RouterLink} to="/">Canada</Button>
+      </Link>
+      </Grid>
+      <Grid item><Link
+            href="/europe"
+            passHref><Button startIcon={<BuildIcon />} variant='outlined' style={{borderColor: '#7E9EF5', backgroundColor: '#7E9EF5', color: "#1A1B36" }}>Europe</Button>
+      </Link>
       </Grid> 
 		</Router>
 	</Grid>	
@@ -339,13 +356,33 @@ export default function Home({ allPostsData }, props) {
       <br/>
       <Grid container direction={'row'} spacing={1}>
       <Router>
-        <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">United States</Button>
+        <Grid item>
+        <Link
+            href="/unitedStates"
+            passHref>
+          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>United States</Button>
+          </Link>
         </Grid>
-        <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">Mexico</Button>
+        <Grid item>
+        <Link
+            href="/mexico"
+            passHref>
+          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>Mexico</Button>
+          </Link>
         </Grid>
-        <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">Canada</Button>
+        <Grid item>
+        <Link
+            href="/canada"
+            passHref>
+          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>Canada</Button>
+        </Link>
         </Grid>
-        <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">Europe</Button>
+        
+        <Grid item><Link
+            href="/europe"
+            passHref>
+            <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>Europe</Button>
+            </Link>
         </Grid>
       </Router>
     </Grid>
@@ -375,7 +412,7 @@ export default function Home({ allPostsData }, props) {
           >
             <ListItem button onClick={handleClick}>
               <ListItemIcon>
-                <Build style={{ color: "#7E9EF5" }}/>
+                <BuildIcon style={{ color: "#7E9EF5" }}/>
               </ListItemIcon>
               <ListItemText primary="Canada" secondary="1 system undergoing maintenance" />
               {open ? <ExpandLess /> : <ExpandMore />}
@@ -396,7 +433,7 @@ export default function Home({ allPostsData }, props) {
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <Build style={{ color: "#7E9EF5" }}/>
+                    <BuildIcon style={{ color: "#7E9EF5" }}/>
                   </ListItemIcon>
                   <ListItemText primary="System 3 is undgergoing maintenance" />
                 </ListItem>

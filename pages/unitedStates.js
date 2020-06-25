@@ -1,6 +1,8 @@
 import CustomTable from '../components/customTable';
 import Layout, { siteTitle } from '../components/layout'
 import { Typography } from '@material-ui/core';
+import Skeleton from '@material-ui/lab/Skeleton';
+import dynamic from 'next/dynamic';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import HomeIcon from '@material-ui/icons/Home';
@@ -9,8 +11,6 @@ import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
 import { makeStyles } from '@material-ui/core/styles';
 import PublicIcon from '@material-ui/icons/Public';
-import BuildIcon from '@material-ui/icons/Build';
-import UpdateIcon from '@material-ui/icons/Update';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,10 +25,12 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-
-function ScheduledMaintenance(props) {
+function UnitedStates(props) {
     const { loading = false } = props;
     const classes = useStyles();
+    const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
+        ssr: false
+      });
 
     return <Layout>
         <br/>
@@ -38,17 +40,17 @@ function ScheduledMaintenance(props) {
               Home
             </Link>
             <Typography color="textPrimary" className={classes.link}>
-              <UpdateIcon className={classes.icon} />
-                Scheduled Maintenance
+              <PublicIcon className={classes.icon} />
+                United States
             </Typography>
           </Breadcrumbs>
         <br/>
         <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Scheduled Maintenance'}
+            {loading ? <Skeleton /> : 'United States'}
         </Typography>
         <br/>
-        <CustomTable/>
+        <DynamicComponentWithNoSSR/>
     </Layout>
 }
 
-export default ScheduledMaintenance
+export default UnitedStates
