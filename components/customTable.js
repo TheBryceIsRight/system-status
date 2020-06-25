@@ -14,6 +14,12 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import CloseIcon from '@material-ui/icons/Close';
+import Typography from '@material-ui/core/Typography';
 
 const columns = [
     { id: 'name', label: 'Name' },
@@ -43,10 +49,10 @@ const StyledTableCell = withStyles((theme) => ({
     head: {
     backgroundColor: '#1A1B36',
     color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
+    },
+    body: {
+      fontSize: 14,
+    },
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
@@ -63,6 +69,12 @@ const StyledTableRow = withStyles((theme) => ({
     backgroundColor: '#1A1B36',
     },
   },
+  tr: {
+    background: "#1A1B36",
+    '&:hover': {
+      background: "#7E9EF5",
+    }
+  }
 }))(TableRow);
 
 const StyledPaginationRow = withStyles((theme) => ({
@@ -154,11 +166,60 @@ function TablePaginationActions(props) {
       minWidth: 500,
     },
   });
+
+  const styles = (theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(2),
+    },
+    closeButton: {
+      position: 'absolute',
+      right: theme.spacing(1),
+      top: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+  });
+
+  const DialogTitle = withStyles(styles)((props) => {
+    const { children, classes, onClose, ...other } = props;
+    return (
+      <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <Typography variant="h6">{children}</Typography>
+        {onClose ? (
+          <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    );
+  });
+  
+  const DialogContent = withStyles((theme) => ({
+    root: {
+      padding: theme.spacing(2),
+    },
+  }))(MuiDialogContent);
+  
+  const DialogActions = withStyles((theme) => ({
+    root: {
+      margin: 0,
+      padding: theme.spacing(1),
+    },
+  }))(MuiDialogActions);
+  
   
   export default function CustomPaginationActionsTable() {
     const classes = useStyles2();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
   
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
   
@@ -196,7 +257,7 @@ function TablePaginationActions(props) {
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
             ).map((row) => (
-              <StyledTableRow key={row.name}>
+              <StyledTableRow key={row.name} selected='true' hover='true'>
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
@@ -239,6 +300,7 @@ function TablePaginationActions(props) {
           </TableFooter>
         </Table>
       </TableContainer>
+      
     );
   }
   

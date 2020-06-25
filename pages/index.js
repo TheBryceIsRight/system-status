@@ -141,7 +141,7 @@ export default function Home({ allPostsData }, props) {
       <section className={utilStyles.headingMd}>
         <br/>
         <Typography variant="h3">
-          {loading ? <Skeleton /> : 'React Demo'}
+          {loading ? <Skeleton /> : 'Hi UX Team!'}
         </Typography>
         <br/>
         <Typography variant='body1'>
