@@ -190,6 +190,10 @@ export default function Home({ allPostsData }, props) {
         
         */}
 
+
+        {loading ? (
+        <Skeleton animation="wave" variant="rect" width={180} height={180} />
+      ) : (
         <Link
             href="/activeIssues"
             passHref>
@@ -203,47 +207,62 @@ export default function Home({ allPostsData }, props) {
                  borderColor: '#6669A8', 
                  color: "#FFA631" }}>1</Button>
                  </Link>
-          <Typography variant='body2' align='center' >
-            Active Issues
+            
+         )}
+      <Typography variant='body2' align='center' >
+      {loading ? <Skeleton /> : 'Active Issues'}
           </Typography>
+        
       </Grid>
 		  <Grid item>
-      <Link
+
+      {loading ? (
+        <Skeleton animation="wave" variant="rect" width={180} height={180} />
+      ) : (
+        <Link
             href="/activeMaintenance"
             passHref>
-          <Button variant="outlined" 
+          <Button variant="outlined"
           style = 
-            {{ fontSize: '100px', 
-               maxWidth: '180px', 
-               maxHeight: '180px', 
-               minWidth: '180px', 
-               minHeight: '180px', 
-               borderColor: '#6669A8', 
-               color: "#7E9EF5" }}>2</Button>
-              </Link>
-          <Typography variant='body2' align='center' >
-            Active Maintenance
+              {{ fontSize: '100px', 
+                 maxWidth: '180px', 
+                 maxHeight: '180px', 
+                 minWidth: '180px', 
+                 minHeight: '180px', 
+                 borderColor: '#6669A8', 
+                 color: "#7E9EF5" }}>2</Button>
+                 </Link>
+            
+         )}
+      <Typography variant='body2' align='center' >
+      {loading ? <Skeleton /> : 'Active Maintenance'}
           </Typography>
+      
           </Grid>
 				  <Grid item>
-          <Link
+          
+          {loading ? (
+        <Skeleton animation="wave" variant="rect" width={180} height={180} />
+      ) : (
+        <Link
             href="/scheduledMaintenance"
             passHref>
-          <Button 
-          component ='a'
-          variant="outlined"
+          <Button variant="outlined"
           style = 
-          {{ fontSize: '100px', 
-             maxWidth: '180px', 
-             maxHeight: '180px', 
-             minWidth: '180px', 
-             minHeight: '180px', 
-             borderColor: '#6669A8', 
-             color: "#2ABD91" }}>3</Button>
-               </Link>
-				  <Typography variant='body2' align='center' >
-              Scheduled Maintenance
-            </Typography>
+              {{ fontSize: '100px', 
+                 maxWidth: '180px', 
+                 maxHeight: '180px', 
+                 minWidth: '180px', 
+                 minHeight: '180px', 
+                 borderColor: '#6669A8', 
+                 color: "#2ABD91" }}>3</Button>
+                 </Link>
+            
+         )}
+      <Typography variant='body2' align='center' >
+      {loading ? <Skeleton /> : 'Active Maintenance'}
+          </Typography>
+
           </Grid>
       </Router>
     </Grid>
@@ -260,9 +279,17 @@ export default function Home({ allPostsData }, props) {
       <Typography variant="h6">
         {loading ? <Skeleton /> : 'System 1'}
       </Typography>
-      <p>Experiencing a service disruption</p>
+      
+      <Grid contaoiner direction={'column'} spacing={1}>
+        <Grid item alignItems='baseline'>
+          <Typography variant="h7">
+        {loading ? <Skeleton /> : 'Experiencing a service disruption'}
+      </Typography></Grid>
+      </Grid>
+      <br/>
       <Grid container direction={'row'} spacing={1}>
       <Router>
+        
         <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">United States</Button>
       </Grid>
       <Grid item><Button startIcon={<Warning />} variant='outlined' style={{borderColor: '#FFA631', backgroundColor: '#FFA631', color: "#1A1B36" }} component={RouterLink} to="/">Mexico</Button>
@@ -278,7 +305,13 @@ export default function Home({ allPostsData }, props) {
     <Typography variant="h6">
         {loading ? <Skeleton /> : 'System 2'}
       </Typography>
-      <p>All systems nominal</p>
+      <Grid container direction={'column'} spacing={1}>
+        <Grid item alignItems='baseline'>
+          <Typography variant="h7">
+        {loading ? <Skeleton /> : 'All systems nominal'}
+      </Typography></Grid>
+      </Grid>
+      <br/>
       <Grid container direction={'row'} spacing={1}>
       <Router>
         <Grid item><Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }} component={RouterLink} to="/">United States</Button>
