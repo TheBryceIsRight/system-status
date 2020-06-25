@@ -67,7 +67,23 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import PropTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import MaterialLink from '@material-ui/core/Link';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ErrorIcon from '@material-ui/icons/Error';
+import DescriptionIcon from '@material-ui/icons/Description';
 
+const useStyles2 = makeStyles((theme) => ({
+  link: {
+    display: 'flex',
+  },
+  icon: {
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(0.35),
+    width: 20,
+    height: 20,
+  },
+}));
 
 const labels = {
   0.5: 'Useless',
@@ -116,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
 function CustomCheckbox() {
   const classes = useStyles();
 
+
   return (
     <Checkbox
       defaultChecked
@@ -150,6 +167,7 @@ export default function Home({ allPostsData }, props) {
   const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
   const classes1 = useStyle1();
+  const classes2 = useStyles2();
 
   const handleClick = () => {
     setOpen(!open);
@@ -160,10 +178,17 @@ export default function Home({ allPostsData }, props) {
   return (
     <Layout home>
       <Head>
-        <title>Bryce's Next.js Project</title>
+        <title>Next.js Project</title>
       </Head>
      
       <section className={utilStyles.headingMd}>
+        <br/>
+        <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
+            <Typography color="textPrimary" className={classes2.link}>
+              <HomeIcon className={classes2.icon} />
+                Home
+            </Typography>
+          </Breadcrumbs>
         <br/>
         <Typography variant="h3">
           {loading ? <Skeleton /> : 'React Demo'}
