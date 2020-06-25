@@ -13,6 +13,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography'
 
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
@@ -45,9 +46,37 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import PolicyIcon from '@material-ui/icons/Policy';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+import Skeleton from '@material-ui/lab/Skeleton';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+
+
 
 const name = 'System Status';
 export const siteTitle = 'Next.js Demo';
+
+const labels = {
+  0.5: 'Useless',
+  1: 'Useless+',
+  1.5: 'Poor',
+  2: 'Poor+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Good',
+  4: 'Good+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+};
+
+const useStyle1 = makeStyles({
+  root: {
+    width: 200,
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
 
 const StyledMenu = withStyles({
   paper: {
@@ -92,8 +121,19 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function Layout({ children, home }) {
+function handleClick(event) {
+  event.preventDefault();
+  console.info('You clicked a breadcrumb.');
+}
+
+export default function Layout({ children, home }, props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [value, setValue] = React.useState(3);
+  const [hover, setHover] = React.useState(-1);
+  const classes1 = useStyle1();
+
+  const { loading = false } = props;
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -126,7 +166,7 @@ export default function Layout({ children, home }) {
         {home ? (
           <>
             <div className="App">
-            <DrawerDemo/>  
+            <DrawerDemo/>
             </div>
           </>
         ) : (
@@ -150,21 +190,30 @@ export default function Layout({ children, home }) {
           <br/>
           <br/>
           
-          <Grid container spacing={1}  direction="row" alignItems="center">
+          <Grid container spacing={1}  direction="column" alignItems="left">
             <Grid item>
-              <ThumbsUpDown/>
+            <ThumbsUpDown/>
+            <Typography variant="h6">
+              {loading ? <Skeleton /> : 'Was this page helpful?'}
+            </Typography>
+            
             </Grid>
             <Grid item>
-              <h3>Was this page helpful?</h3>
+            <div className={classes1.root}>
+              <Rating
+                name="hover-feedback"
+                value={value}
+                precision={0.5}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+                onChangeActive={(event, newHover) => {
+                  setHover(newHover);
+                }}
+              />
+              {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+            </div>
             </Grid>
-          </Grid>
-          <Grid container spacing={4} direction="row" alignItems="center">
-            <Grid item>
-              <Button startIcon={<ThumbUp />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Yes</Button>
-              </Grid>
-            <Grid item>
-              <Button startIcon={<ThumbDown />} variant='text' style={{borderColor: '#FFE4BD', color: "#FFFFFF" }} component={RouterLink} to="/">No</Button>
-              </Grid>
           </Grid>
           <br/>
           

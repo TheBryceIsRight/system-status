@@ -20,6 +20,9 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import LaunchIcon from '@material-ui/icons/Launch';
+import Link from 'next/link'
+
 
 const columns = [
     { id: 'name', label: 'Name' },
@@ -27,7 +30,13 @@ const columns = [
     {
       id: 'population',
       label: 'Population',
+      align: 'right'},
+      {
+        id: 'details',
+      label: 'Details',
       align: 'right',
+      
+
       format: (value) => value.toLocaleString('en-US'),
     },
     
@@ -141,8 +150,8 @@ function TablePaginationActions(props) {
     rowsPerPage: PropTypes.number.isRequired,
   };
   
-  function createData(name, calories, fat) {
-    return { name, calories, fat };
+  function createData(name, calories, fat, link) {
+    return { name, calories, fat, link };
   }
   
   const rows = [
@@ -267,6 +276,16 @@ function TablePaginationActions(props) {
                 <StyledTableCell style={{ width: 160 }} align="right">
                   {row.fat}
                 </StyledTableCell>
+                <StyledTableCell align="right">
+                <Link
+                  href="/prototypeDetails"
+                  passHref>
+                  <IconButton>
+                    <LaunchIcon fontSize="small"></LaunchIcon>
+                  </IconButton>
+                </Link>
+                  
+                </StyledTableCell>
               </StyledTableRow>
             ))}
   
@@ -284,7 +303,7 @@ function TablePaginationActions(props) {
                    
                 }}
                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                colSpan={3}
+                colSpan={4}
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}

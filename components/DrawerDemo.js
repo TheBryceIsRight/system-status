@@ -25,7 +25,6 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { MemoryRouter as Router } from 'react-router'
-import { Link as RouterLink } from 'react-router-dom'
 import Link from 'next/link';
 
 import clsx from 'clsx';
@@ -257,24 +256,41 @@ export default function DrawerDemo() {
         </List>
         <Divider />
         <List>
+        <Link
+            href="/canada"
+            passHref>
             <ListItem button>
                 <ListItemIcon><PublicIcon/>
                 </ListItemIcon>
                 <ListItemText primary='Canada' />
             </ListItem>
+            </Link>
+            <Link
+            href="/europe"
+            passHref>
             <ListItem button>
                 <ListItemIcon><PublicIcon/></ListItemIcon>
                 <ListItemText primary='Europe' />
             </ListItem>
-            <ListItem button>
+            </Link>
+            <Link
+            href="/mexico"
+            passHref>
+              <ListItem button>
                 <ListItemIcon><PublicIcon/></ListItemIcon>
                 <ListItemText primary='Mexico' />
             </ListItem>
-            <ListItem button>
+            </Link>
+            <Link
+            href="/unitedStates"
+            passHref>
+              <ListItem button>
                 <ListItemIcon><PublicIcon/>
                 </ListItemIcon>
                 <ListItemText primary='United States' />
             </ListItem>
+            </Link>
+            
         </List>
         <Divider />
         <List>
