@@ -38,8 +38,6 @@ import Copyright from '../components/copyright';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown';
-import { LocalizeProvider } from "react-localize-redux";
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -75,8 +73,23 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import Tooltip from '@material-ui/core/Tooltip';
 import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+
+const useStyles3 = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 const useStyles2 = makeStyles((theme) => ({
   link: {
@@ -174,13 +187,27 @@ const theme = createMuiTheme({
 export default function Home({ allPostsData }, props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [openSnack, setOpenSnack] = React.useState(false);
   const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
   const classes1 = useStyle1();
   const classes2 = useStyles2();
+  const classes3 = useStyles3();
 
   const handleClick = () => {
     setOpen(!open);
+  };
+
+  const handleClickSnack = () => {
+    setOpenSnack(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSnack(false);
   };
 
   const { loading = false } = props;
@@ -217,14 +244,22 @@ export default function Home({ allPostsData }, props) {
         </Typography>
         </Grid>
         <Grid item>
-        <Tooltip title="These blog posts come with the next.js tutorial">
-          <IconButton aria-label="help">
+          <div className={classes3.root}>
+          <Tooltip title="These blog posts come with the next.js tutorial">
+          <IconButton aria-label="help" onClick={handleClickSnack}>
             <HelpIcon />
-        </IconButton>
-        </Tooltip>
+          </IconButton>
+          </Tooltip>
+          <Snackbar open={openSnack} autoHideDuration={4000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+              Hi world, I'm a snackbar!
+            </Alert>
+          </Snackbar>
+          </div>
+        
         </Grid>
       </Grid>
-
+      
 
           <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
@@ -343,7 +378,8 @@ export default function Home({ allPostsData }, props) {
         </Grid>
       </Grid>
       </section>
-      <br></br>
+      <br/>
+      <br/>
       <Typography variant="h5">
         {loading ? <Skeleton /> : 'Regions'}
       </Typography>
@@ -352,9 +388,9 @@ export default function Home({ allPostsData }, props) {
         {loading ? <Skeleton /> : 'System 1'}
       </Typography>
       
-      <Grid contaoiner direction={'column'} spacing={1}>
-        <Grid item alignItems='baseline'>
-          <Typography variant="h7">
+      <Grid container direction={'column'} spacing={1}  alignItems='baseline'>
+        <Grid item>
+          <Typography variant="subtitle1">
         {loading ? <Skeleton /> : 'Experiencing a service disruption'}
       </Typography></Grid>
       </Grid>
@@ -394,9 +430,9 @@ export default function Home({ allPostsData }, props) {
     <Typography variant="h6">
         {loading ? <Skeleton /> : 'System 2'}
       </Typography>
-      <Grid container direction={'column'} spacing={1}>
-        <Grid item alignItems='baseline'>
-          <Typography variant="h7">
+      <Grid container direction={'column'} spacing={1} alignItems='baseline'>
+        <Grid item>
+          <Typography variant="subtitle1">
         {loading ? <Skeleton /> : 'All systems nominal'}
       </Typography></Grid>
       </Grid>
@@ -584,7 +620,7 @@ export default function Home({ allPostsData }, props) {
         <br/>
           
     <Router>
-          <Grid container spacing={1}  direction="column" alignItems="left">
+          <Grid container spacing={1}  direction="column">
             <Grid item>
             <ThumbsUpDown/>
             <Typography variant="h6">

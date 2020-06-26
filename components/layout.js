@@ -32,7 +32,6 @@ import ThumbsUpDown from '@material-ui/icons/ThumbsUpDown'
 import { MemoryRouter as Router } from 'react-router'
 import { Link as RouterLink } from 'react-router-dom'
 import Copyright from '../components/copyright';
-import { LocalizeProvider } from "react-localize-redux";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
