@@ -41,6 +41,7 @@ function ActiveIssues(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
+        <br/>
         <Typography variant="h4">
             {loading ? <Skeleton /> : 'Active Issues'}
         </Typography>

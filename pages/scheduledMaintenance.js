@@ -43,6 +43,7 @@ function ScheduledMaintenance(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
+        <br/>
         <Typography variant="h4">
             {loading ? <Skeleton /> : 'Scheduled Maintenance'}
         </Typography>
