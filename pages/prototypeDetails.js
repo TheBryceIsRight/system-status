@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomTable from '../components/customTable';
 import Layout, { siteTitle } from '../components/layout'
 import { Typography } from '@material-ui/core';
@@ -28,10 +27,6 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
-import BuildIcon from '@material-ui/icons/Build';
-import Grid from '@material-ui/core/Grid'
-
-
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -81,19 +76,10 @@ function PrototypeDetails(props) {
               Details
             </Typography>
           </Breadcrumbs>
-          <br/>
-          <br/>
-        <Grid container direction='row' spacing={2} alignItems="center">
-          <Grid item>
-            <BuildIcon style={{ color: '#7E9EF5'}} fontSize='large'></BuildIcon>
-          </Grid>
-          <Grid item>
-          <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Issue #007'}
-          </Typography>
-          </Grid>
-        </Grid>  
-
+          <br/>  
+        <Typography variant="h4">
+            {loading ? <Skeleton /> : 'Details (demo)'}
+        </Typography>
         <br/>
           <List 
           component="nav" 
@@ -150,7 +136,7 @@ function PrototypeDetails(props) {
               <ListItemIcon>
                 <DescriptionIcon/>
               </ListItemIcon>
-              <ListItemText primary="Description" secondary="Last updated 3 hours 21 min ago at 6/26/2020 9:16 AM EST" />
+              <ListItemText primary="Description" secondary="1 update posted 37 min ago" />
               {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={open} timeout="auto" unmountOnExit>
@@ -159,7 +145,7 @@ function PrototypeDetails(props) {
                   <ListItemIcon>
                     <ChangeHistoryIcon/>
                   </ListItemIcon>
-                  <ListItemText primary="Preparing to take system offline for maintenance" secondary='6/26/2020 9:16 AM EST' />
+                  <ListItemText primary="Preparing to take system offline for maintenance" secondary='6/26/2020 9:16 PM EST' />
                 </ListItem>
                 <ListItem className={classes.nested}>
                   <ListItemIcon>

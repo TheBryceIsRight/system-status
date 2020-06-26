@@ -40,7 +40,6 @@ function Canada(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
-        <br/>
         <Typography variant="h4">
             {loading ? <Skeleton /> : 'Canada'}
         </Typography>

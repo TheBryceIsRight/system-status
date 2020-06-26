@@ -41,7 +41,6 @@ function Europe(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
-        <br/>
         <Typography variant="h4">
             {loading ? <Skeleton /> : 'Europe'}
         </Typography>

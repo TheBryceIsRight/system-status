@@ -70,6 +70,7 @@ import MaterialLink from '@material-ui/core/Link';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
+<<<<<<< HEAD
 import Tooltip from '@material-ui/core/Tooltip';
 import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
@@ -81,6 +82,8 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+=======
+>>>>>>> parent of 19eef2c... added tooltips
 
 const useStyles3 = makeStyles((theme) => ({
   root: {
@@ -100,11 +103,6 @@ const useStyles2 = makeStyles((theme) => ({
     marginTop: theme.spacing(0.35),
     width: 20,
     height: 20,
-  },
-  absolute: {
-    position: 'absolute',
-    bottom: theme.spacing(2),
-    right: theme.spacing(3),
   },
 }));
 
@@ -237,6 +235,7 @@ export default function Home({ allPostsData }, props) {
         <br/>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+<<<<<<< HEAD
       <Grid container spacing={1} direction='row' alignItems='center' >
         <Grid item>
           <Typography variant="h5">
@@ -262,6 +261,13 @@ export default function Home({ allPostsData }, props) {
       
 
           <ul className={utilStyles.list}>
+=======
+      <Typography variant="h5">
+        {loading ? <Skeleton /> : 'Blog'}
+      </Typography>
+      <br/>
+        <ul className={utilStyles.list}>
+>>>>>>> parent of 19eef2c... added tooltips
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href="/posts/[id]" as={`/posts/${id}`}>
