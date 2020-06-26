@@ -5,10 +5,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import ErrorIcon from '@material-ui/icons/Error';
-import DescriptionIcon from '@material-ui/icons/Description';
 import { makeStyles } from '@material-ui/core/styles';
-import PublicIcon from '@material-ui/icons/Public';
 import BuildIcon from '@material-ui/icons/Build';
 import UpdateIcon from '@material-ui/icons/Update';
 
