@@ -257,7 +257,7 @@ export default function Home({ allPostsData }, props) {
           </Tooltip>
           <Snackbar open={openSnack} autoHideDuration={4000} onClose={handleClose}>
             <Alert onClose={handleClose} severity="success">
-              Hi world, I'm a snackbar!
+              You sucessfully clicked a button, congrats!
             </Alert>
           </Snackbar>
           </div>
