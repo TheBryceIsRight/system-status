@@ -50,11 +50,23 @@ import Box from '@material-ui/core/Box';
 import Skeleton from '@material-ui/lab/Skeleton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import StarIcon from '@material-ui/icons/Star';
+
 
 
 
 const name = 'System Status';
 export const siteTitle = 'Next.js Demo';
+
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#40BBEF'
+  },
+  iconHover: {
+    color: '#73D6F9',
+  },
+})(Rating);
+
 
 const labels = {
   0.5: 'Useless',
@@ -199,18 +211,21 @@ export default function Layout({ children, home }, props) {
             </Grid>
             <Grid item>
             <div className={classes1.root}>
-              <Rating
-                name="hover-feedback"
-                value={value}
-                precision={0.5}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-                onChangeActive={(event, newHover) => {
-                  setHover(newHover);
-                }}
-              />
-              {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+            <StyledRating
+              name="customized-hover-feedback"
+              defaultValue={2}
+              value={value}
+              getLabelText={(value) => `${value} Star${value !== 1 ? 's' : ''}`}
+              precision={0.5}
+              icon={<StarIcon fontSize="inherit" />}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              onChangeActive={(event, newHover) => {
+                setHover(newHover);
+              }}
+            />
+            {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
             </div>
             </Grid>
           </Grid>

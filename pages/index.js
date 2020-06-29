@@ -7,7 +7,7 @@ import Date from '../components/date'
 
 import React from 'react'
 import render from 'react-dom'
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -75,11 +75,21 @@ import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import StarIcon from '@material-ui/icons/Star';
 
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
+
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#40BBEF'
+  },
+  iconHover: {
+    color: '#73D6F9',
+  },
+})(Rating);
 
 
 const useStyles3 = makeStyles((theme) => ({
@@ -625,19 +635,23 @@ export default function Home({ allPostsData }, props) {
             </Grid>
             <Grid item>
             <div className={classes1.root}>
-              <Rating
-                name="hover-feedback"
-                value={value}
-                precision={0.5}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-                onChangeActive={(event, newHover) => {
-                  setHover(newHover);
-                }}
-              />
-              {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+            <StyledRating
+              name="customized-hover-feedback"
+              defaultValue={2}
+              value={value}
+              getLabelText={(value) => `${value} Star${value !== 1 ? 's' : ''}`}
+              precision={0.5}
+              icon={<StarIcon fontSize="inherit" />}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              onChangeActive={(event, newHover) => {
+                setHover(newHover);
+              }}
+            />
+            {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
             </div>
+            
             </Grid>
           </Grid>
           <br/>
