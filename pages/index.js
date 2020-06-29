@@ -213,7 +213,7 @@ export default function Home({ allPostsData }, props) {
         <title>Next.js Project</title>
       </Head>
      
-      <section className={utilStyles.headingMd}>
+      <section>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Typography color="textPrimary" className={classes2.link}>
