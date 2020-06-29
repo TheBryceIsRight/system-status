@@ -372,7 +372,7 @@ export default function Home({ allPostsData }, props) {
             
          )}
       <Typography variant='body2' align='center' >
-      {loading ? <Skeleton /> : 'Active Maintenance'}
+      {loading ? <Skeleton /> : 'Scheduled Maintenance'}
           </Typography>
 
           </Grid>
@@ -644,6 +644,7 @@ export default function Home({ allPostsData }, props) {
               icon={<StarIcon fontSize="inherit" />}
               onChange={(event, newValue) => {
                 setValue(newValue);
+                console.log('User rated this page ',newValue,' stars');
               }}
               onChangeActive={(event, newHover) => {
                 setHover(newHover);

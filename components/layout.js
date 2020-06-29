@@ -220,6 +220,7 @@ export default function Layout({ children, home }, props) {
               icon={<StarIcon fontSize="inherit" />}
               onChange={(event, newValue) => {
                 setValue(newValue);
+                console.log('User rated this page ',newValue,' stars');
               }}
               onChangeActive={(event, newHover) => {
                 setHover(newHover);

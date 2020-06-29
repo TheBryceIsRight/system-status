@@ -9,7 +9,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles } from '@material-ui/core/styles'
 import PublicIcon from '@material-ui/icons/Public';
 
 
@@ -23,8 +23,15 @@ const useStyles = makeStyles((theme) => ({
       width: 20,
       height: 20,
     },
+    typography: {
+      color: 'black',
+    },
+
+
   }));
 
+
+  
 function UnitedStates(props) {
     const { loading = false } = props;
     const classes = useStyles();
@@ -49,7 +56,9 @@ function UnitedStates(props) {
             {loading ? <Skeleton /> : 'United States'}
         </Typography>
         <br/>
-        <DynamicComponentWithNoSSR/>
+        <ThemeProvider>
+          <DynamicComponentWithNoSSR/>
+        </ThemeProvider>
     </Layout>
 }
 
