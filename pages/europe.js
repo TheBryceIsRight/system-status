@@ -10,6 +10,8 @@ import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
 import { makeStyles } from '@material-ui/core/styles';
 import PublicIcon from '@material-ui/icons/Public';
+import dynamic from 'next/dynamic';
+
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -26,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
 function Europe(props) {
     const { loading = false } = props;
     const classes = useStyles();
-
+    const DynamicComponentWithNoSSR = dynamic(() => import('../components/europeMap' ), {
+      ssr: false
+    });
 
     return <Layout>
         <br/>
@@ -45,7 +49,7 @@ function Europe(props) {
             {loading ? <Skeleton /> : 'Europe'}
         </Typography>
         <br/>
-        <CustomTable/>
+        <DynamicComponentWithNoSSR/>
     </Layout>
 }
 

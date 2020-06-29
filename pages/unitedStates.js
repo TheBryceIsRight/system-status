@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 function UnitedStates(props) {
     const { loading = false } = props;
     const classes = useStyles();
-    const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
+    const DynamicComponentWithNoSSR = dynamic(() => import('../components/unitedStatesMap' ), {
         ssr: false
       });
 
