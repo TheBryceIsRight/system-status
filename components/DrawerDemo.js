@@ -146,10 +146,10 @@ export default function DrawerDemo() {
     const renderMenu = (
         <Menu
         anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         id={menuId}
         keepMounted
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={handleMenuClose}
         >
@@ -317,7 +317,7 @@ export default function DrawerDemo() {
         return (  
             <div className={classes.grow}>
             <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
-              <Toolbar>
+              <Toolbar disableGutters='true'>
                 <React.Fragment>
                 <IconButton
                     className={classes.menuButton}
