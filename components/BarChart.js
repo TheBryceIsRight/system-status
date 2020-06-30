@@ -25,7 +25,12 @@ const theme = {
     text: {
       fontFamily: "Roboto"
     }
-  }
+  },
+  tooltip: {
+    container: {
+        background: '#1A1B36',
+    },
+},
 };
 
 class BarChart extends React.Component {
