@@ -12,6 +12,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@nivo/bar": "^0.62.0",
+    "@nivo/line": "^0.62.0",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "moment": "^2.27.0",

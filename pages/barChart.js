@@ -11,7 +11,7 @@ import Link from '@material-ui/core/Link';
 import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import WorkLifeBalance from "../components/WorkLifeBalance";
-
+import CardChart from "../components/cardChart";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,20 +53,25 @@ function LineChart(props) {
             </Link>
             <Typography color="textPrimary" className={classes.link}>
               <BugReportIcon className={classes.icon} />
-              Bar Chart Debugging
+              Chart Debugging
             </Typography>
           </Breadcrumbs>
           <br/>  
         <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Bar Chart'}
+            {loading ? <Skeleton /> : 'Responsive Charts'}
         </Typography>
         <br/>
         <div className="App">
             <div className="Chart">
                 <WorkLifeBalance/>
             </div>
-        </div>      
-        
+        </div>
+        <br/>      
+        <div className="App">
+            <div className="Chart">
+                <CardChart/>
+            </div>
+        </div> 
           
     </Layout>
 

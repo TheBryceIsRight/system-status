@@ -306,7 +306,7 @@ export default function DrawerDemo() {
             href="/barChart"
             passHref>
             <ListItem button>
-              <ListItemIcon><BugReportIcon/></ListItemIcon><ListItemText primary='Debug Link'/>
+              <ListItemIcon><BugReportIcon/></ListItemIcon><ListItemText primary='Chart Debugging'/>
             </ListItem>
             </Link>
         </List>

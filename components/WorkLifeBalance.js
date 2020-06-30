@@ -164,7 +164,7 @@ class WorkLifeBalance extends React.Component {
               </Avatar>
             }
             action={
-              <IconButton disabled={true}>
+              <IconButton>
                 <MoreVert className={classes.menuIcon} />
               </IconButton>
             }

@@ -201,7 +201,7 @@ export default function Layout({ children, home }, props) {
           <br/>
           <br/>
           
-          <Grid container spacing={1}  direction="column" alignItems="left">
+          <Grid container spacing={1}  direction="column">
             <Grid item>
             <ThumbsUpDown/>
             <Typography variant="h6">
