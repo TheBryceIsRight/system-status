@@ -317,7 +317,7 @@ export default function DrawerDemo() {
         return (  
             <div className={classes.grow}>
             <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
-              <Toolbar disableGutters='true'>
+              <Toolbar disableGutters={true}>
                 <React.Fragment>
                 <IconButton
                     className={classes.menuButton}
