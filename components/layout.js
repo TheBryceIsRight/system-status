@@ -173,22 +173,8 @@ export default function Layout({ children, home }, props) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header>
-        {home ? (
-          <>
-            <div className="App">
-            <DrawerDemo/>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="App">
-            <DrawerDemo/>  
-            </div>
+        <DrawerDemo/>
 
-          </>
-        )}
-      </header>
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
@@ -387,7 +373,9 @@ export default function Layout({ children, home }, props) {
           <Divider />
           <br/>
           <br/>
-          <Copyright />
+          <div role="contentinfo">
+              <Copyright />
+          </div>
         </div>
         
       )}

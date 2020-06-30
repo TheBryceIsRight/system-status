@@ -65,3 +65,7 @@ h1 {
 .mapboxgl-popup-close-button {font-size: 16px; font-family: Tahoma, Verdana, sans-serif; color: #c3c3c3; font-weight: bold; background-color: #1A1B36; border-color: #1A1B36 ; border-radius: 4px;}
 .mapboxgl-popup-close-button:hover {color: #7E9EF5; background-color: #2C2E57;}
 body .mapboxgl-map {line-height: 1.4;}
+
+.mapboxgl-ctrl-attrib-inner a{
+  color: #1A1B36;
+}

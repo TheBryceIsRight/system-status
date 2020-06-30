@@ -10,7 +10,7 @@ import CopyrightIcon from '@material-ui/icons/Copyright';
 
 export default function Copyright() {
   return (
-    <Typography variant="body2" align="center">
+    <Typography variant="body2" align="center" >
       {'Copyright '}
       <Router>
       <Button startIcon={<CopyrightIcon />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Elavon</Button>

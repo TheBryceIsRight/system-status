@@ -7,7 +7,7 @@ import Date from '../components/date'
 
 import React from 'react'
 import render from 'react-dom'
-import { createMuiTheme, makeStyles, ThemeProvider, withStyles } from '@material-ui/core/styles'
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -77,6 +77,9 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import StarIcon from '@material-ui/icons/Star';
 
+
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -222,7 +225,11 @@ export default function Home({ allPostsData }, props) {
       <Head>
         <title>Next.js Project</title>
       </Head>
-     
+      <br/>
+      <ThemeProvider theme={responsiveTheme}>
+        <Typography variant='h1'>React Demo</Typography>
+      </ThemeProvider>
+
       <section>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
@@ -232,21 +239,23 @@ export default function Home({ allPostsData }, props) {
             </Typography>
           </Breadcrumbs>
         <br/>
-        <Typography variant="h3">
-          {loading ? <Skeleton /> : 'React Demo'}
-        </Typography>
         <br/>
+        <ThemeProvider theme={responsiveTheme}>
         <Typography variant='body1'>
         {loading ? <Skeleton /> : 'Hi, I’m Bryce. I’m a software engineer and a user experience designer.'}
         </Typography>
+        </ThemeProvider>
+        <br/>
         <br/>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
       <Grid container spacing={1} direction='row' alignItems='center' >
         <Grid item>
-          <Typography variant="h5">
-            {loading ? <Skeleton /> : 'Blog'}
-        </Typography>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="h2">
+              {loading ? <Skeleton /> : 'Blog'}
+          </Typography>
+        </ThemeProvider>
         </Grid>
         <Grid item>
           <div className={classes3.root}>
@@ -261,10 +270,10 @@ export default function Home({ allPostsData }, props) {
             </Alert>
           </Snackbar>
           </div>
-        
         </Grid>
       </Grid>
-      
+      <br/>
+
 
           <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
@@ -282,9 +291,11 @@ export default function Home({ allPostsData }, props) {
       </section>
       <section>
       <br/>
-      <Typography variant="h5">
-        {loading ? <Skeleton /> : 'Summary'}
-      </Typography>
+      <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="h2">
+              {loading ? <Skeleton /> : 'Summary'}
+          </Typography>
+        </ThemeProvider>
       <br/>
       <Grid container direction={'row'} spacing={2} justify='space-evenly' alignItems='center'>
       <Router>
@@ -321,9 +332,11 @@ export default function Home({ allPostsData }, props) {
                  </Link>
             
          )}
-      <Typography variant='body2' align='center' >
-      {loading ? <Skeleton /> : 'Active Issues'}
+      <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="body2" align='center'>
+              {loading ? <Skeleton /> : 'Active Issues'}
           </Typography>
+        </ThemeProvider>
         
       </Grid>
 		  <Grid item>
@@ -346,9 +359,11 @@ export default function Home({ allPostsData }, props) {
                  </Link>
             
          )}
-      <Typography variant='body2' align='center' >
-      {loading ? <Skeleton /> : 'Active Maintenance'}
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="body2" align='center'>
+              {loading ? <Skeleton /> : 'Active Maintenance'}
           </Typography>
+        </ThemeProvider>
       
           </Grid>
 				  <Grid item>
@@ -371,9 +386,11 @@ export default function Home({ allPostsData }, props) {
                  </Link>
             
          )}
-      <Typography variant='body2' align='center' >
-      {loading ? <Skeleton /> : 'Scheduled Maintenance'}
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="body2" align='center'>
+              {loading ? <Skeleton /> : 'Scheduled Maintenance'}
           </Typography>
+        </ThemeProvider>
 
           </Grid>
       </Router>
@@ -385,19 +402,25 @@ export default function Home({ allPostsData }, props) {
       </section>
       <br/>
       <br/>
-      <Typography variant="h5">
-        {loading ? <Skeleton /> : 'Regions'}
-      </Typography>
+      <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="h2">
+              {loading ? <Skeleton /> : 'Regions'}
+          </Typography>
       <br/>
-      <Typography variant="h6">
+      <br/>
+      <Typography variant="h3">
         {loading ? <Skeleton /> : 'System 1'}
       </Typography>
-      
+      </ThemeProvider>
+
       <Grid container direction={'column'} spacing={1}  alignItems='baseline'>
         <Grid item>
-          <Typography variant="subtitle1">
-        {loading ? <Skeleton /> : 'Experiencing a service disruption'}
-      </Typography></Grid>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="body1">
+            {loading ? <Skeleton /> : 'Experiencing a service disruption'}
+          </Typography>
+        </ThemeProvider>
+      </Grid>
       </Grid>
       <br/>
       <Grid container direction={'row'} spacing={1}>
@@ -432,14 +455,21 @@ export default function Home({ allPostsData }, props) {
 		</Router>
 	</Grid>	
     <br/>
-    <Typography variant="h6">
+    <br/>
+    <ThemeProvider theme={responsiveTheme}>
+    <Typography variant="h3">
         {loading ? <Skeleton /> : 'System 2'}
       </Typography>
+    </ThemeProvider>
+    
       <Grid container direction={'column'} spacing={1} alignItems='baseline'>
         <Grid item>
-          <Typography variant="subtitle1">
-        {loading ? <Skeleton /> : 'All systems nominal'}
-      </Typography></Grid>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="body1">
+            {loading ? <Skeleton /> : 'All systems nominal'}
+          </Typography>
+        </ThemeProvider>
+      </Grid>
       </Grid>
       <br/>
       <Grid container direction={'row'} spacing={1}>
@@ -478,9 +508,11 @@ export default function Home({ allPostsData }, props) {
     <br/>
 	
 
-    <Typography variant="h5">
-        {loading ? <Skeleton /> : 'Locations'}
-      </Typography>
+    <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="h2">
+              {loading ? <Skeleton /> : 'Locations'}
+          </Typography>
+        </ThemeProvider>
     <br/>
     
     
@@ -491,9 +523,11 @@ export default function Home({ allPostsData }, props) {
 
     {/* Begin Countries List
     */}
-    <Typography variant="h5">
-        {loading ? <Skeleton /> : 'Countries'}
-      </Typography>
+    <ThemeProvider theme={responsiveTheme}>
+          <Typography variant="h2">
+              {loading ? <Skeleton /> : 'Countries'}
+          </Typography>
+        </ThemeProvider>
       <List 
           component="nav" 
           aria-label="country list"
@@ -628,7 +662,7 @@ export default function Home({ allPostsData }, props) {
           <Grid container spacing={1}  direction="column">
             <Grid item>
             <ThumbsUpDown/>
-            <Typography variant="h6">
+            <Typography variant="body1">
               {loading ? <Skeleton /> : 'Was this page helpful?'}
             </Typography>
             
@@ -789,7 +823,7 @@ export default function Home({ allPostsData }, props) {
           component="nav" 
           aria-label="legal links"
           subheader={
-            <ListSubheader component="div" id="sales-list-subheader">
+            <ListSubheader component="div" id="legal-list-subheader">
               Legal
             </ListSubheader>
           }

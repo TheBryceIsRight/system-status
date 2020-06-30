@@ -218,7 +218,7 @@ export default function DrawerDemo() {
         className={clsx(classes.list, {
             [classes.fullList]: anchor === 'top' || anchor === 'bottom',
         })}
-        role="presentation"
+        //role="navigation"
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
         >
@@ -316,7 +316,7 @@ export default function DrawerDemo() {
 
         return (  
             <div className={classes.grow}>
-            <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
+            <AppBar position="static"  style={{ background: 'transparent', boxShadow: 'none'}}>
               <Toolbar disableGutters={true}>
                 <React.Fragment>
                 <IconButton
