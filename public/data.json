@@ -1,0 +1,38 @@
+
+[
+  {
+    "Day": "Sun",
+    "Coding at work": 1,
+    "Coding outside work": 5
+  },
+  {
+    "Day": "Mon",
+    "Coding at work": 6,
+    "Coding outside work": 2
+  },
+  {
+    "Day": "Tues",
+    "Coding at work": 2,
+    "Coding outside work": 5
+  },
+  {
+    "Day": "Wed",
+    "Coding at work": 4,
+    "Coding outside work": 7
+  },
+  {
+    "Day": "Thurs",
+    "Coding at work": 8,
+    "Coding outside work": 2
+  },
+  {
+    "Day": "Fri",
+    "Coding at work": 8,
+    "Coding outside work": 1
+  },
+  {
+    "Day": "Sat",
+    "Coding at work": 0,
+    "Coding outside work": 6
+  }
+]

@@ -37,7 +37,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import UpdateIcon from '@material-ui/icons/Update';
 import PublicIcon from '@material-ui/icons/Public';
-import Flag from 'react-world-flags'  
+import Flag from 'react-world-flags'
+import BugReportIcon from '@material-ui/icons/BugReport';  
+  
 
 const useStyles = makeStyles((theme) => ({
     body: {
@@ -300,6 +302,13 @@ export default function DrawerDemo() {
                 /></ListItemIcon>
                 <ListItemText>Dark Mode</ListItemText>
             </ListItem>
+            <Link
+            href="/barChart"
+            passHref>
+            <ListItem button>
+              <ListItemIcon><BugReportIcon/></ListItemIcon><ListItemText primary='Debug Link'/>
+            </ListItem>
+            </Link>
         </List>
         </Router>
         </div>
