@@ -1,7 +1,6 @@
 import CustomTable from '../components/customTable';
 import Layout, { siteTitle } from '../components/layout'
 import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
 import dynamic from 'next/dynamic';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
@@ -27,6 +26,13 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
+import PublicIcon from '@material-ui/icons/Public';
+import Head from 'next/head'
+
+
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -57,6 +63,11 @@ function PrototypeDetails(props) {
     };
 
     return <Layout>
+        <Head>
+          <title>
+            Item Details
+          </title>
+        </Head>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Link color="inherit" href="/" className={classes.link}>
@@ -77,9 +88,11 @@ function PrototypeDetails(props) {
             </Typography>
           </Breadcrumbs>
           <br/>  
-        <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Details (demo)'}
-        </Typography>
+          <br/>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'Item Details'}</Typography>
+        </ThemeProvider>
+        <br/>
         <br/>
           <List 
           component="nav" 
