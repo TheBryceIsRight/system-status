@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styles from './layout.module.css';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import Button from '@material-ui/core/Button';
@@ -53,7 +53,8 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import StarIcon from '@material-ui/icons/Star';
 
 
-
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const name = 'System Status';
 export const siteTitle = 'Next.js Demo';
@@ -173,16 +174,16 @@ export default function Layout({ children, home }, props) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-        <DrawerDemo/>
+      <DrawerDemo/>
 
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className={styles.backToHome} role='contentinfo'>
           <Router>
           <Link
             href="/"
             passHref>
-            <Button startIcon={<ArrowBackIcon />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Back to Home</Button>
+            <Button startIcon={<ArrowBackIcon />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }}>Back to Home</Button>
             </Link>
           <br/>
           <br/>
@@ -190,9 +191,12 @@ export default function Layout({ children, home }, props) {
           <Grid container spacing={1}  direction="column">
             <Grid item>
             <ThumbsUpDown/>
-            <Typography variant="h6">
-              {loading ? <Skeleton /> : 'Was this page helpful?'}
-            </Typography>
+            <ThemeProvider theme={responsiveTheme}>
+              <Typography variant="body1">
+                {loading ? <Skeleton /> : 'Was this page helpful?'}
+              </Typography>
+            </ThemeProvider>
+            
             
             </Grid>
             <Grid item>
@@ -326,7 +330,7 @@ export default function Layout({ children, home }, props) {
           component="nav" 
           aria-label="social media links"
           subheader={
-            <ListSubheader component="div" id="sales-list-subheader">
+            <ListSubheader component="div" id="social-media-list-subheader">
               Social Media
             </ListSubheader>
           }
@@ -356,7 +360,7 @@ export default function Layout({ children, home }, props) {
           component="nav" 
           aria-label="legal links"
           subheader={
-            <ListSubheader component="div" id="sales-list-subheader">
+            <ListSubheader component="div" id="legal-list-subheader">
               Legal
             </ListSubheader>
           }
@@ -373,7 +377,7 @@ export default function Layout({ children, home }, props) {
           <Divider />
           <br/>
           <br/>
-          <div role="contentinfo">
+          <div>
               <Copyright />
           </div>
         </div>
