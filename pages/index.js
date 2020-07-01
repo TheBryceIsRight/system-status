@@ -223,7 +223,7 @@ export default function Home({ allPostsData }, props) {
   return (
     <Layout home>
       <Head>
-        <title>System status home page</title>
+        <title>System status</title>
       </Head>
       <section>
         <br/>

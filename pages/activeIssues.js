@@ -34,7 +34,7 @@ function ActiveIssues(props) {
 
     return <Layout >
       <Head>
-        <title>Active issues related to all systems</title>
+        <title>Active issues</title>
       </Head>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>

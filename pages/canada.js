@@ -40,7 +40,7 @@ function Canada(props) {
     return <Layout>
       <Head>
         <title>
-        Status of systems in the Canada
+        Canada
         </title>
       </Head>
         <br/>

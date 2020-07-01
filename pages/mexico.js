@@ -38,7 +38,7 @@ function Mexico(props) {
     return <Layout>
         <Head>
           <title>
-          Status of systems in the Europe
+          Mexico
           </title>
         </Head>
         <br/>

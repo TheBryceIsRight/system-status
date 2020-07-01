@@ -50,7 +50,7 @@ function LineChart(props) {
     return <Layout>
         <Head>
           <title>
-            A page for debugging data visualization solutions
+            Chart debugging
           </title>
         </Head>
         <br/>

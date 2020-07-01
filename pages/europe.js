@@ -38,7 +38,7 @@ function Europe(props) {
     return <Layout>
         <Head>
           <title>
-          Status of systems in the Europe
+          Europe
           </title>
         </Head>
         <br/>

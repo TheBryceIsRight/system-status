@@ -45,7 +45,7 @@ function UnitedStates(props) {
 
     return <Layout>
       <Head>
-        <title>Status of systems in the United States</title>
+        <title>United States</title>
       </Head>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
