@@ -223,13 +223,8 @@ export default function Home({ allPostsData }, props) {
   return (
     <Layout home>
       <Head>
-        <title>Next.js Project</title>
+        <title>System status home page</title>
       </Head>
-      <br/>
-      <ThemeProvider theme={responsiveTheme}>
-        <Typography variant='h1'>{loading ? <Skeleton /> : 'React Demo'}</Typography>
-      </ThemeProvider>
-
       <section>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
@@ -239,6 +234,9 @@ export default function Home({ allPostsData }, props) {
             </Typography>
           </Breadcrumbs>
         <br/>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'React Demo'}</Typography>
+        </ThemeProvider>
         <br/>
         <ThemeProvider theme={responsiveTheme}>
         <Typography variant='body1'>

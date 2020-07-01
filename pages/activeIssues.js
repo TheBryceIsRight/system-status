@@ -37,10 +37,6 @@ function ActiveIssues(props) {
         <title>Active issues related to all systems</title>
       </Head>
         <br/>
-        <ThemeProvider theme={responsiveTheme}>
-          <Typography variant='h1'>{loading ? <Skeleton /> : 'Active Issues'}</Typography>
-        </ThemeProvider>
-        <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Link color="inherit" href="/" className={classes.link}>
               <HomeIcon className={classes.icon} />
@@ -52,6 +48,9 @@ function ActiveIssues(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'Active Issues'}</Typography>
+        </ThemeProvider>
         <br/>
         <CustomTable/>
     </Layout>

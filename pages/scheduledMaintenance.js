@@ -5,10 +5,13 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { makeStyles } from '@material-ui/core/styles';
 import BuildIcon from '@material-ui/icons/Build';
 import UpdateIcon from '@material-ui/icons/Update';
+import Head from 'next/head'
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -28,6 +31,9 @@ function ScheduledMaintenance(props) {
     const classes = useStyles();
 
     return <Layout>
+        <Head>
+          <title>Scheduled maintenance for all systems</title>
+        </Head>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Link color="inherit" href="/" className={classes.link}>
@@ -40,9 +46,11 @@ function ScheduledMaintenance(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
-        <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Scheduled Maintenance'}
-        </Typography>
+        <br/>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'Scheduled Maintenance'}</Typography>
+        </ThemeProvider>
+        <br/>
         <br/>
         <CustomTable/>
     </Layout>

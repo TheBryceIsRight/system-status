@@ -8,10 +8,13 @@ import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { makeStyles } from '@material-ui/core/styles';
 import PublicIcon from '@material-ui/icons/Public';
 import BuildIcon from '@material-ui/icons/Build';
+import Head from 'next/head'
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -31,6 +34,11 @@ function ActiveMaintenance(props) {
     const classes = useStyles();
 
     return <Layout>
+      <Head>
+        <title>
+          Active maintenance for all systems
+        </title>
+      </Head>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Link color="inherit" href="/" className={classes.link}>
@@ -43,9 +51,9 @@ function ActiveMaintenance(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
-        <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Active Maintenance'}
-        </Typography>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'Active Maintenance'}</Typography>
+        </ThemeProvider>
         <br/>
         <CustomTable/>
     </Layout>
