@@ -227,7 +227,7 @@ export default function Home({ allPostsData }, props) {
       </Head>
       <br/>
       <ThemeProvider theme={responsiveTheme}>
-        <Typography variant='h1'>React Demo</Typography>
+        <Typography variant='h1'>{loading ? <Skeleton /> : 'React Demo'}</Typography>
       </ThemeProvider>
 
       <section>

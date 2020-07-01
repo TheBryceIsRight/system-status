@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import CustomTable from '../components/customTable';
 import Layout, { siteTitle } from '../components/layout'
 import { Typography } from '@material-ui/core';
@@ -8,8 +9,11 @@ import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import PublicIcon from '@material-ui/icons/Public';
+
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -28,7 +32,14 @@ function ActiveIssues(props) {
     const { loading = false } = props;
     const classes = useStyles();
 
-    return <Layout>
+    return <Layout >
+      <Head>
+        <title>Active issues related to all systems</title>
+      </Head>
+        <br/>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'Active Issues'}</Typography>
+        </ThemeProvider>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Link color="inherit" href="/" className={classes.link}>
@@ -41,9 +52,6 @@ function ActiveIssues(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
-        <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Active Issues'}
-        </Typography>
         <br/>
         <CustomTable/>
     </Layout>

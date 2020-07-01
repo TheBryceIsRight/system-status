@@ -78,12 +78,6 @@ const StyledTableRow = withStyles((theme) => ({
     backgroundColor: '#1A1B36',
     },
   },
-  tr: {
-    background: "#1A1B36",
-    '&:hover': {
-      background: "#7E9EF5",
-    }
-  }
 }))(TableRow);
 
 const StyledPaginationRow = withStyles((theme) => ({
@@ -266,7 +260,7 @@ function TablePaginationActions(props) {
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
             ).map((row) => (
-              <StyledTableRow key={row.name} selected='true' hover='true'>
+              <StyledTableRow key={row.name} selected={true} hover={true}>
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
@@ -279,8 +273,9 @@ function TablePaginationActions(props) {
                 <StyledTableCell align="right">
                 <Link
                   href="/prototypeDetails"
+    
                   passHref>
-                  <IconButton>
+                  <IconButton aria-label='List item details'>
                     <LaunchIcon fontSize="small"></LaunchIcon>
                   </IconButton>
                 </Link>
@@ -299,9 +294,7 @@ function TablePaginationActions(props) {
             <StyledPaginationRow>
               <TablePagination
                 style = 
-                {{ borderBottom: 'none',
-                   
-                }}
+                {{ borderBottom: 'none'}}
                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                 colSpan={4}
                 count={rows.length}
