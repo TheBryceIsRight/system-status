@@ -43,7 +43,7 @@ const styles = theme => ({
     textAlign: "left"
   },
   subheader: {
-    color: "#919eab",
+    color: "#E5E7E5",
     fontFamily: "'Roboto', sans-serif",
     fontSize: 14,
     fontWeight: 500,
@@ -164,7 +164,7 @@ class WorkLifeBalance extends React.Component {
               </Avatar>
             }
             action={
-              <IconButton>
+              <IconButton aria-label='Menu Icon'>
                 <MoreVert className={classes.menuIcon} />
               </IconButton>
             }
@@ -175,7 +175,7 @@ class WorkLifeBalance extends React.Component {
             <div>
               <Legend data={legend} />
             </div>
-            <div className={classes.container}>
+            <div className={classes.container} >
               <BarChart
                 data={wlbData}
                 keys={keys}

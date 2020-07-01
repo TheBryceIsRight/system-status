@@ -23,7 +23,8 @@ const theme = {
   },
   legends: {
     text: {
-      fontFamily: "Roboto"
+      fontFamily: "Roboto",
+      fill: 'white'
     }
   },
   tooltip: {

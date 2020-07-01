@@ -3,7 +3,6 @@ import BugReportIcon from '@material-ui/icons/BugReport';
 
 import Layout, { siteTitle } from '../components/layout'
 import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
 import dynamic from 'next/dynamic';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
@@ -12,7 +11,11 @@ import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import WorkLifeBalance from "../components/WorkLifeBalance";
 import CardChart from "../components/cardChart";
+import Head from 'next/head'
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -45,6 +48,11 @@ function LineChart(props) {
 
 
     return <Layout>
+        <Head>
+          <title>
+            A page for debugging data visualization solutions
+          </title>
+        </Head>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Link color="inherit" href="/" className={classes.link}>
@@ -57,9 +65,9 @@ function LineChart(props) {
             </Typography>
           </Breadcrumbs>
           <br/>  
-        <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Responsive Charts'}
-        </Typography>
+          <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'Data Vis'}</Typography>
+        </ThemeProvider>
         <br/>
         <div className="App">
             <div className="Chart">

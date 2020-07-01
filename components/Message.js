@@ -10,7 +10,7 @@ import paw from "../public/paw";
 
 const styles = theme => ({
   info: {
-    background: "#7E9EF5",
+    background: "#B0ECFE",
   },
   text: {
     padding: 0,
@@ -22,7 +22,7 @@ function Message({ classes, children }) {
     <Paper elevation={0} className={classes.info}>
       <ListItem>
         <ListItemIcon>
-          <img src={paw} height="28" />
+          <img src={paw} height="28" alt="A dog's pawprint"/>
         </ListItemIcon>
         <ListItemText className={classes.text}>{children}</ListItemText>
       </ListItem>

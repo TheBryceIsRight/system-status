@@ -7,10 +7,10 @@ function Legend({ classes, data }) {
     <ol className={classes.legend}>
       {data.map(({ name, color }, i) => {
         return (
-          <li key={i}>
-            <div className={classes.marker} style={{ backgroundColor: color }} />
-            <div style={{ color: "#919EAB" }}>{name}</div>
-          </li>
+          <ul key={i}>
+            <li className={classes.marker} style={{ backgroundColor: color }} />
+            <li style={{ color: "#FFFFFF" }}>{name}</li>
+          </ul>
         );
       })}
     </ol>

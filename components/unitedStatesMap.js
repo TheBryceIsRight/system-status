@@ -79,7 +79,6 @@ class UnitedStatesMap extends Component {
 
     return (
       <div className="App">
-        <Button>My Location</Button>
         <div className='map'>
 
         <ReactMapGL

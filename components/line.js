@@ -43,9 +43,9 @@ class LineGraph extends Component {
                         colorBy="id"
                         margin={{
                             "top": 20,
-                            "right": 80,
+                            "right": 70,
                             "bottom": 40,
-                            "left": 60
+                            "left": 50
                         }}
                         xScale={{
                             //"type": "point"

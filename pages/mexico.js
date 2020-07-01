@@ -8,10 +8,13 @@ import HomeIcon from '@material-ui/icons/Home';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ErrorIcon from '@material-ui/icons/Error';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { makeStyles } from '@material-ui/core/styles';
 import PublicIcon from '@material-ui/icons/Public';
 import dynamic from 'next/dynamic';
+import Head from 'next/head'
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 
+let responsiveTheme = createMuiTheme();
+responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -33,6 +36,11 @@ function Mexico(props) {
     });
 
     return <Layout>
+        <Head>
+          <title>
+          Status of systems in the Europe
+          </title>
+        </Head>
         <br/>
         <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="small" />}>
             <Link color="inherit" href="/" className={classes.link}>
@@ -45,9 +53,10 @@ function Mexico(props) {
             </Typography>
           </Breadcrumbs>
         <br/>
-        <Typography variant="h4">
-            {loading ? <Skeleton /> : 'Mexico'}
-        </Typography>
+        <ThemeProvider theme={responsiveTheme}>
+          <Typography variant='h1'>{loading ? <Skeleton /> : 'Mexico'}</Typography>
+        </ThemeProvider>
+        <br/>
         <br/>
         <DynamicComponentWithNoSSR/>
     </Layout>

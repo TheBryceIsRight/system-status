@@ -78,7 +78,7 @@ class CardChart extends React.Component {
               </Avatar>
             }
             action={
-              <IconButton>
+              <IconButton aria-label='Menu icon'>
                 <MoreVert className={classes.menuIcon} />
               </IconButton>
             }
