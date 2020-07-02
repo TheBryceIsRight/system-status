@@ -1,24 +1,20 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { black } from '@material-ui/core/colors';
+import React, { useState }  from 'react'
+import { createMuiTheme, makeStyles, ThemeProvider, withStyles } from '@material-ui/core/styles'
+import {
+  orange,
+  lightBlue,
+  deepPurple,
+  deepOrange,
+  grey
+} from "@material-ui/core/colors";
+
 
 // Create a theme instance.
-const theme = createMuiTheme({
+
+let theme = createMuiTheme({
   palette: {
-    type: "dark",
-    primary: {
-      main: '#556cd6',
-    },
-    secondary: {
-      main: '#6669A8',
-    },
-    error: {
-      main: '#FFA631',
-    },
     background: {
       default: '#1A1B36',
-    },
-    action: {
-      hover: '#2C2E57',
     }
   },
   

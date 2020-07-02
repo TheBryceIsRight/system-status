@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styles from './layout.module.css';
-import { createMuiTheme, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
+import { createMuiTheme, fade, makeStyles, ThemeProvider, withStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import Button from '@material-ui/core/Button';
@@ -14,13 +14,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography'
+import React, { useState }  from 'react'
 
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import BuildIcon from '@material-ui/icons/Build';
 import ErrorIcon from '@material-ui/icons/Error';
-import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid'
 import DrawerDemo from './DrawerDemo';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -51,10 +51,30 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import StarIcon from '@material-ui/icons/Star';
+import {
+  orange,
+  lightBlue,
+  deepPurple,
+  deepOrange,
+  grey
+} from "@material-ui/core/colors";
 
+import SearchIcon from '@material-ui/icons/Search';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import InputBase from '@material-ui/core/InputBase';
+import Badge from '@material-ui/core/Badge';
+import UpdateIcon from '@material-ui/icons/Update';
+import BugReportIcon from '@material-ui/icons/BugReport';  
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar'
+import MenuIcon from '@material-ui/icons/Menu';
+import Drawer from '@material-ui/core/Drawer';  
+import clsx from 'clsx';
+import PublicIcon from '@material-ui/icons/Public';
 
-let responsiveTheme = createMuiTheme();
-responsiveTheme = responsiveFontSizes(responsiveTheme);
 
 const name = 'System Status';
 export const siteTitle = 'Next.js Demo';
@@ -81,6 +101,18 @@ const labels = {
   4.5: 'Excellent',
   5: 'Excellent+',
 };
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  checked: {},
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
+}));
 
 const useStyle1 = makeStyles({
   root: {
@@ -121,28 +153,107 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+
+const useStyles2 = makeStyles((theme) => ({
+  link: {
+    display: 'flex',
+  },
+  icon: {
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(0.35),
+    width: 20,
+    height: 20,
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
+const useStyles3 = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
-}
+const useStyles4 = makeStyles((theme) => ({
+  body: {
+    margin:0,
+  },
+
+  list: {
+      width: 'auto',
+    },
+    fullList: {
+      width: 'auto',
+    },
+
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 2,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'primary',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
+  },
+  sectionMobile: {
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
+}));
 
 export default function Layout({ children, home }, props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
-  const classes1 = useStyle1();
 
   const { loading = false } = props;
 
@@ -155,9 +266,260 @@ export default function Layout({ children, home }, props) {
     setAnchorEl(null);
   };
 
+  const [darkState, setDarkState] = useState(false);
+  const palletType = darkState ? "dark" : "light";
+  const mainPrimaryColor = darkState ? '#FFF': '#1A1B36';
+  const mainSecondaryColor = darkState ? '#FFF' : '#1A1B36';
+  const mainTertiaryColor = darkState ? lightBlue[500] : grey[500];
+  const mainLinkColor = darkState ? '#7E9EF5' : '#1A1B36';
+  const mainButtonColor = darkState ? deepOrange[900] : '#7E9EF5';
+  const mainBackgroundColor = darkState ? '#1A1B36' : '#FFF';
+
+  let darkTheme = createMuiTheme({
+    palette: {
+      type: palletType,
+      primary: {
+        main: mainPrimaryColor
+      },
+      secondary: {
+        main: mainSecondaryColor
+      },
+      tertiary: {
+        main: mainTertiaryColor
+      },
+      linkColor: {
+        main: mainLinkColor
+      },
+      button: {
+        main: mainButtonColor
+      },
+      background: {
+        default: mainBackgroundColor
+      },
+      MuiListItemText: {
+        primary: {
+          color: mainPrimaryColor
+        }
+      }
+    }
+  });
+
+  darkTheme = responsiveFontSizes(darkTheme);
+
+  const classes = useStyles();
+  const classes1 = useStyle1();
+  const classes2 = useStyles2();
+  const classes3 = useStyles3();
+  const [open, setOpen] = React.useState(true);
+  const [openSnack, setOpenSnack] = React.useState(false);
+
+  const handleThemeChange = () => {
+    setDarkState(!darkState);
+  };
+
+  {/*Top App Bar stuff */}
+  const classes4 = useStyles4();
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleProfileMenuOpen = (event) => {
+      setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+      setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+      setAnchorEl(null);
+      handleMobileMenuClose();
+  };
+
+  const handleMobileMenuOpen = (event) => {
+      setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const menuId = 'primary-search-account-menu';
   
+  const renderMenu = (
+    
+      <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+      >
+
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      </Menu>
+  );
+
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const renderMobileMenu = (
+      <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+      >
+      <MenuItem>
+          
+          <IconButton aria-label="show 1 new notifications" color="primary">
+          <Badge badgeContent={1} color="secondary">
+              <NotificationsIcon />
+          </Badge>
+          </IconButton>
+          <p>Notifications</p>
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="primary"
+          >
+          <AccountCircle />
+          </IconButton>
+          <p>Profile</p>
+      </MenuItem>
+      </Menu>
+  );
+
+  const [state, setState] = React.useState({
+      top: false,
+      left: false,
+      bottom: false,
+      right: false,
+      checkedA: true,
+      checkedB: true,
+  });
+
+  const handleChange = (event) => {
+      setState({ ...state, [event.target.name]: event.target.checked });
+    };
+
+  const toggleDrawer = (anchor, open) => (event) => {
+      if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+      }
+
+      setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+      <div
+      className={clsx(classes4.list, {
+          [classes4.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      //role="navigation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+      >
+      <Router>
+      <List>
+          <ListItem button>
+              <ListItemIcon><AssessmentIcon/></ListItemIcon>
+              <ListItemText primary='All Systems' />
+          </ListItem>
+          <Link
+          href="/activeIssues"
+          passHref>
+          <ListItem button>
+              <ListItemIcon><ErrorIcon/></ListItemIcon>
+              <ListItemText primary='Active Issues' />
+          </ListItem>
+          </Link>
+          <Link
+          href="/activeMaintenance"
+          passHref>
+          <ListItem button>
+              <ListItemIcon><BuildIcon/></ListItemIcon>
+              <ListItemText primary='Active Maintenance' />
+          </ListItem>
+          </Link>
+          <Link
+          href="/scheduledMaintenance"
+          passHref>
+          <ListItem button>
+              <ListItemIcon><UpdateIcon/>
+              </ListItemIcon>
+              <ListItemText primary='Scheduled Maintenance' />
+          </ListItem>
+          </Link>
+          
+          
+      </List>
+      <Divider />
+      <List>
+      <Link
+          href="/canada"
+          passHref>
+          <ListItem button>
+              <ListItemIcon><PublicIcon/>
+              </ListItemIcon>
+              <ListItemText primary='Canada' />
+          </ListItem>
+          </Link>
+          <Link
+          href="/europe"
+          passHref>
+          <ListItem button>
+              <ListItemIcon><PublicIcon/></ListItemIcon>
+              <ListItemText primary='Europe' />
+          </ListItem>
+          </Link>
+          <Link
+          href="/mexico"
+          passHref>
+            <ListItem button>
+              <ListItemIcon><PublicIcon/></ListItemIcon>
+              <ListItemText primary='Mexico' />
+          </ListItem>
+          </Link>
+          <Link
+          href="/unitedStates"
+          passHref>
+            <ListItem button>
+              <ListItemIcon><PublicIcon/>
+              </ListItemIcon>
+              <ListItemText primary='United States' />
+          </ListItem>
+          </Link>
+          
+      </List>
+      <Divider />
+      <List>
+          <ListItem>
+              <ListItemIcon>
+              <FormControlLabel
+              control={<Switch checked={darkState} onChange={handleThemeChange} name="darkSwitchSideBar" />}
+              />
+              </ListItemIcon>
+              <ListItemText>Dark Mode</ListItemText>
+          </ListItem>
+          <Link
+          href="/barChart"
+          passHref>
+          <ListItem button>
+            <ListItemIcon><BugReportIcon/></ListItemIcon><ListItemText primary='Chart Debugging'/>
+          </ListItem>
+          </Link>
+      </List>
+      </Router>
+      </div>
+  );
 
   return (
+
       <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
@@ -174,16 +536,110 @@ export default function Layout({ children, home }, props) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <DrawerDemo/>
+      {!home && (
+          <React.Fragment>
+          <ThemeProvider theme={darkTheme}>
+          <CssBaseline></CssBaseline>
+          <div className={classes4.grow}>
+          <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
+            <Toolbar disableGutters={true}>
+              <React.Fragment>
+              <IconButton
+                  className={classes4.menuButton}
+                  color="primary"
+                  aria-label="open menu"
+                  onClick={toggleDrawer('left', true)}
+                  > 
+              <MenuIcon />
+          </IconButton>   
+              <Drawer 
+                  anchor={'left'} 
+                  open={state['left']} 
+                  onClose={toggleDrawer('left', false)}>{list('left')}
+              </Drawer>
+              </React.Fragment>
+              
+                <ThemeProvider theme={darkTheme}>
+                <Link href='/'>
+                <a>
+                  <Typography color="primary" className={classes4.title} variant="h6" >
+                    Status
+                  </Typography>
+                </a>
+                
+                </Link>
+                </ThemeProvider> 
+  
+                <ThemeProvider theme={darkTheme}>
+              <div className={classes4.search}>
+                <div className={classes4.searchIcon}>
+                  <SearchIcon color="primary"/>
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes4.inputRoot,
+                    input: classes4.inputInput,
+                  }}
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </div>
+              <div className={classes4.grow} />
+              <div className={classes4.sectionDesktop}>
+                <IconButton aria-label="show 1 new notifications" color="primary">
+                  <Badge badgeContent={1} color="secondary">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+                <IconButton
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="primary"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </div>
+              <div className={classes4.sectionMobile}>
+                <IconButton
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="primary"
+                >
+                  <MoreIcon />
+                </IconButton>
+              </div>
+              </ThemeProvider> 
+
+            </Toolbar>
+          </AppBar>
+          {renderMobileMenu}
+          {renderMenu}
+        </div>
+        </ThemeProvider>
+      </React.Fragment>         
+
+      )}
+
+      
+      
+      
+
 
       <main>{children}</main>
       {!home && (
+        
+        <ThemeProvider theme={darkTheme}>
         <div className={styles.backToHome} role='contentinfo'>
           <Router>
           <Link
             href="/"
             passHref>
-            <Button startIcon={<ArrowBackIcon />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }}>Back to Home</Button>
+            <Button startIcon={<ArrowBackIcon />} variant='text' style={{borderColor: '#7E9EF5', color: "primary" }}>Back to Home</Button>
             </Link>
           <br/>
           <br/>
@@ -191,11 +647,9 @@ export default function Layout({ children, home }, props) {
           <Grid container spacing={1}  direction="column">
             <Grid item>
             <ThumbsUpDown/>
-            <ThemeProvider theme={responsiveTheme}>
-              <Typography variant="body1">
+              <Typography variant="body1" color='primary'>
                 {loading ? <Skeleton /> : 'Was this page helpful?'}
               </Typography>
-            </ThemeProvider>
             
             
             </Grid>
@@ -227,6 +681,7 @@ export default function Layout({ children, home }, props) {
           <br/>
           <Divider/>
           <Router>
+          
           <List 
           component="nav" 
           aria-label="company links"
@@ -381,8 +836,9 @@ export default function Layout({ children, home }, props) {
               <Copyright />
           </div>
         </div>
-        
+        </ThemeProvider>
       )}
+      
     </div>    
   )
 }
