@@ -86,6 +86,9 @@ const StyledRating = withStyles({
   iconHover: {
     color: '#73D6F9',
   },
+  value: {
+    color: 'primary'
+  }
 })(Rating);
 
 
@@ -680,64 +683,61 @@ export default function Layout({ children, home }, props) {
           
           <br/>
           <Divider/>
-          <Router>
           
+          <ThemeProvider theme={darkTheme}>
           <List 
           component="nav" 
           aria-label="company links"
           subheader={
-            <ListSubheader component="div" id="company-list-subheader">
+            <ListSubheader component="div" id="company-list-subheader" color='primary'>
               Company
             </ListSubheader>
           }
           >
             <ListItem button>
               <ListItemIcon>
-                <HomeIcon />
+                <HomeIcon color='primary' />
               </ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Home" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <InfoIcon />
+                <InfoIcon color='primary' />
               </ListItemIcon>
-              <ListItemText primary="About us" />
+              <ListItemText primary="About us" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}} />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <AnnouncementIcon />
+                <AnnouncementIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="News" />
+              <ListItemText primary="News" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}} />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <WorkIcon />
+                <WorkIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="Careers" />
+              <ListItemText primary="Careers" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}} />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <AccountBoxIcon />
+                <AccountBoxIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="Customer Center" />
+              <ListItemText primary="Customer Center" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <HeadsetMicIcon />
+                <HeadsetMicIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="Contact Us" />
+              <ListItemText primary="Contact Us" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
           </List>
-
-          </Router>
-          
           <Divider />
 
           <List 
           component="nav" 
           aria-label="customer service links"
           subheader={
-            <ListSubheader component="div" id="customer-service-list-subheader">
+            <ListSubheader component="div" id="customer-service-list-subheader" color='primary'>
               Customer Service
             </ListSubheader>
           }
@@ -745,15 +745,15 @@ export default function Layout({ children, home }, props) {
           >
             <ListItem button>
               <ListItemIcon>
-                <PhoneIcon />
+                <PhoneIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="+1-800-725-1243"  secondary="Always available" />
+              <ListItemText primary="+1-800-725-1243"  secondary="Always available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}} />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <MailIcon />
+                <MailIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="custsvc@elavon.com" />
+              <ListItemText primary="custsvc@elavon.com" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
           </List>
           <Divider />
@@ -761,7 +761,7 @@ export default function Layout({ children, home }, props) {
           component="nav" 
           aria-label="sales links"
           subheader={
-            <ListSubheader component="div" id="sales-list-subheader">
+            <ListSubheader component="div" id="sales-list-subheader" color='primary'>
               Sales
             </ListSubheader>
           }
@@ -769,15 +769,15 @@ export default function Layout({ children, home }, props) {
           >
             <ListItem button>
               <ListItemIcon>
-                <PhoneIcon />
+                <PhoneIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="+1-877-774-4090" secondary="Monday - Friday, 9AM - 7PM EST"/>
+              <ListItemText primary="+1-877-774-4090" secondary="Monday - Friday, 9AM - 7PM EST" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <MailIcon />
+                <MailIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="custsvc@elavon.com" />
+              <ListItemText primary="custsvc@elavon.com" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
           </List>
           <Divider/>
@@ -785,7 +785,7 @@ export default function Layout({ children, home }, props) {
           component="nav" 
           aria-label="social media links"
           subheader={
-            <ListSubheader component="div" id="social-media-list-subheader">
+            <ListSubheader component="div" id="scocial-media-list-subheader" color='primary'>
               Social Media
             </ListSubheader>
           }
@@ -793,21 +793,21 @@ export default function Layout({ children, home }, props) {
           >
             <ListItem button>
               <ListItemIcon>
-                <TwitterIcon />
+                <TwitterIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="Twitter" />
+              <ListItemText primary="Twitter" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <YouTubeIcon />
+                <YouTubeIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="YouTube" />
+              <ListItemText primary="YouTube" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <LinkedInIcon />
+                <LinkedInIcon color='primary'/>
               </ListItemIcon>
-              <ListItemText primary="LinkedIn" />
+              <ListItemText primary="LinkedIn" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
           </List>
           <Divider/>
@@ -815,7 +815,7 @@ export default function Layout({ children, home }, props) {
           component="nav" 
           aria-label="legal links"
           subheader={
-            <ListSubheader component="div" id="legal-list-subheader">
+            <ListSubheader component="div" id="legal-list-subheader" color='primary'>
               Legal
             </ListSubheader>
           }
@@ -823,12 +823,12 @@ export default function Layout({ children, home }, props) {
           >
             <ListItem button>
               <ListItemIcon>
-                <PolicyIcon />
+                <PolicyIcon color='primary' />
               </ListItemIcon>
-              <ListItemText primary="Privacy &amp; Cookie Policy" />
+              <ListItemText primary="Privacy &amp; Cookie Policy" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
             </ListItem>
-            
           </List>
+          </ThemeProvider>
           <Divider />
           <br/>
           <br/>

@@ -260,6 +260,7 @@ export default function Home({ allPostsData }, props) {
   const mainLinkColor = darkState ? '#7E9EF5' : '#1A1B36';
   const mainButtonColor = darkState ? deepOrange[900] : '#7E9EF5';
   const mainBackgroundColor = darkState ? '#1A1B36' : '#FFF';
+  const mainGreenColor = darkState ? '#2ABD91' : '#2F8A6F';
 
   let darkTheme = createMuiTheme({
     palette: {
@@ -281,6 +282,9 @@ export default function Home({ allPostsData }, props) {
       },
       background: {
         default: mainBackgroundColor
+      },
+      green: {
+        main: mainGreenColor
       },
       MuiListItemText: {
         primary: {
@@ -702,9 +706,15 @@ export default function Home({ allPostsData }, props) {
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <ThemeProvider theme={darkTheme}>
+              
               <Link href="/posts/[id]" as={`/posts/${id}`} passHref>
-              <a><Typography>{title}</Typography></a>
+                <a>
+                  <Typography color='primary'>
+                    {title}
+                  </Typography>
+                </a>
               </Link>
+              
               <Typography color='secondary' variant='body2'>
                 <Date dateString={date} />
               </Typography>
@@ -820,7 +830,8 @@ export default function Home({ allPostsData }, props) {
         {loading ? <Skeleton /> : 'System 1'}
       </Typography>
       </ThemeProvider>
-
+      
+      
       <Grid container direction={'column'} spacing={1}  alignItems='baseline'>
         <Grid item>
         <ThemeProvider theme={darkTheme}>
@@ -837,14 +848,14 @@ export default function Home({ allPostsData }, props) {
           <Link
             href="/unitedStates"
             passHref>
-          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>United States</Button>
+          <Button startIcon={<CheckCircle/>} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>United States</Button>
           </Link>
       </Grid>
       <Grid item>
       <Link
             href="/mexico"
             passHref>
-        <Button startIcon={<Warning />} variant='outlined' style={{borderColor: '#FFA631', backgroundColor: '#FFA631', color: "#1A1B36" }}>Mexico</Button>
+        <Button startIcon={<Warning/>} variant='outlined' style={{borderColor: '#FFA631', backgroundColor: '#FFA631', color: "#1A1B36" }}>Mexico</Button>
       </Link>
       </Grid>
       <Grid item>
@@ -859,9 +870,8 @@ export default function Home({ allPostsData }, props) {
             passHref><Button startIcon={<BuildIcon />} variant='outlined' style={{borderColor: '#7E9EF5', backgroundColor: '#7E9EF5', color: "#1A1B36" }}>Europe</Button>
       </Link>
       </Grid>
-      
 		</Router>
-	</Grid>	
+	</Grid>
     <br/>
     <br/>
     <ThemeProvider theme={darkTheme}>
