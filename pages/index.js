@@ -98,6 +98,7 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 import UpdateIcon from '@material-ui/icons/Update';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import BugReportIcon from '@material-ui/icons/BugReport';  
+import { blue } from '@material-ui/core/colors';
 
 
 
@@ -252,7 +253,53 @@ export default function Home({ allPostsData }, props) {
 
   //dark mode stuff
 
-  const [darkState, setDarkState] = useState(false);
+  const [darkState, setDarkState] = React.useState('light');
+  const [color, setColor] = React.useState('dark');
+
+  const handleChange1 = (event) => {
+    setColor(event.target.checked ? 'dark' : 'light');
+  };
+
+  const handleThemeChange = () => {
+    setColor(event.target.checked ? 'dark' : 'light');
+    setDarkState(!darkState);
+  };
+
+  const theme = React.useMemo(() => {
+    if (color === 'dark') {
+      return createMuiTheme({
+        palette: {
+          primary: {
+            main: '#B1ECE2',
+            contrastText: '#B1ECE2',
+            borderColor: '#B1ECE2',
+          },
+          secondary: {
+            main: '#7E9EF5',
+            contrastText: '#1A1B36',
+          },
+        },
+      });
+    }
+    if (color === 'light') {
+      return createMuiTheme({
+        palette: {
+          primary: {
+            main: '#2F8A6F',
+            contrastText: '#2F8A6F',
+            borderColor: '#2F8A6F',
+          },
+          secondary: {
+            main: '#1A1B36',
+            contrastText: '#fff',
+          },
+        },
+      });
+    }
+
+    return createMuiTheme();
+  }, [color]);
+
   const palletType = darkState ? "dark" : "light";
   const mainPrimaryColor = darkState ? '#FFF': '#1A1B36';
   const mainSecondaryColor = darkState ? '#FFF' : '#1A1B36';
@@ -260,7 +307,7 @@ export default function Home({ allPostsData }, props) {
   const mainLinkColor = darkState ? '#7E9EF5' : '#1A1B36';
   const mainButtonColor = darkState ? deepOrange[900] : '#7E9EF5';
   const mainBackgroundColor = darkState ? '#1A1B36' : '#FFF';
-  const mainGreenColor = darkState ? '#2ABD91' : '#2F8A6F';
+  const mainGreenColor = darkState ? '#2ABD91' : '#B1ECE2';
 
   let darkTheme = createMuiTheme({
     palette: {
@@ -296,19 +343,37 @@ export default function Home({ allPostsData }, props) {
 
   darkTheme = responsiveFontSizes(darkTheme);
 
+
   const StyledButton = withStyles((darkTheme) => ({
     root: {
-      color: darkTheme.palette.getContrastText('#1A1B36'),
-      backgroundColor: '#101123',
+      color: 'primary',
+      backgroundColor: 'primary',
       borderRadius: 3,
       border: 2,
-      borderColor: '#7E9EF5',
       height: 48,
       fontSize: '100px', 
       maxWidth: '180px', 
       maxHeight: '180px', 
       minWidth: '180px', 
       minHeight: '180px',
+      '&:hover': {
+        backgroundColor: '#2C2E57',
+      },
+    },
+    label: {
+      textTransform: 'capitalize',
+    }
+  }))(Button);
+
+  {/* 
+    <Button startIcon={<CheckCircle/>} variant='outlined' 
+    style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>United States
+    </Button>
+  */}
+
+  const AvailableButton = withStyles((darkTheme) => ({
+    
+    root: {
       '&:hover': {
         backgroundColor: '#2C2E57',
       },
@@ -326,10 +391,6 @@ export default function Home({ allPostsData }, props) {
   const classes1 = useStyle1();
   const classes2 = useStyles2();
   const classes3 = useStyles3();
-
-  const handleThemeChange = () => {
-    setDarkState(!darkState);
-  };
 
   const handleClick = () => {
     setOpen(!open);
@@ -438,7 +499,8 @@ export default function Home({ allPostsData }, props) {
   });
 
   const handleChange = (event) => {
-      setState({ ...state, [event.target.name]: event.target.checked });
+      setState(event.target.checked ? 'dark' : 'light');
+      setColor(event.target.checked ? 'dark' : 'light');
     };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -672,6 +734,11 @@ export default function Home({ allPostsData }, props) {
         <br/>
         <br/>
         </ThemeProvider>
+        
+      <br/>
+      <br/>
+
+
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
       <Grid container spacing={1} direction='row' alignItems='center' >
@@ -845,11 +912,11 @@ export default function Home({ allPostsData }, props) {
       <Grid container direction={'row'} spacing={1}>
       <Router>
         <Grid item>
-          <Link
-            href="/unitedStates"
-            passHref>
-          <Button startIcon={<CheckCircle/>} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>United States</Button>
-          </Link>
+          <ThemeProvider theme={theme}>
+            <Button variant="outlined" color="primary" startIcon={<CheckCircle />}>
+              {'United States'}
+            </Button>
+          </ThemeProvider>
       </Grid>
       <Grid item>
       <Link
@@ -893,32 +960,54 @@ export default function Home({ allPostsData }, props) {
       <Grid container direction={'row'} spacing={1}>
       <Router>
         <Grid item>
+        <ThemeProvider theme={theme}> 
         <Link
             href="/unitedStates"
             passHref>
-          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>United States</Button>
-          </Link>
+            <Button variant="outlined" color="primary" startIcon={<CheckCircle />}>
+              {'United States'}
+              </Button>
+            </Link>
+          </ThemeProvider>          
+ 
         </Grid>
         <Grid item>
+        <ThemeProvider theme={theme}>
         <Link
             href="/mexico"
             passHref>
-          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>Mexico</Button>
+           
+            <Button variant="outlined" color="primary" startIcon={<CheckCircle />}>
+              {'Mexico'}
+            </Button>
           </Link>
+          </ThemeProvider>    
         </Grid>
         <Grid item>
+        <ThemeProvider theme={theme}>
+ 
         <Link
             href="/canada"
             passHref>
-          <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>Canada</Button>
+            <Button variant="outlined" color="primary" startIcon={<CheckCircle />}>
+              {'Canada'}
+            </Button>
         </Link>
+        </ThemeProvider>
+
         </Grid>
         
-        <Grid item><Link
-            href="/europe"
-            passHref>
-            <Button startIcon={<CheckCircle />} variant='outlined' style={{borderColor: '#2F8A6F', color: "#B1ECE2" }}>Europe</Button>
-            </Link>
+        <Grid item>
+          <ThemeProvider theme={theme}>
+ 
+          <Link
+              href="/europe"
+              passHref>
+              <Button variant="outlined" color="primary" startIcon={<CheckCircle />}>
+                {'Europe'}
+              </Button>
+             </Link>
+          </ThemeProvider>
         </Grid>
       </Router>
     </Grid>
@@ -961,19 +1050,25 @@ export default function Home({ allPostsData }, props) {
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 1 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 2 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <BuildIcon style={{ color: "#7E9EF5" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 3 is undgergoing maintenance" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
@@ -982,7 +1077,9 @@ export default function Home({ allPostsData }, props) {
 
             <ListItem button onClick={handleClick}>
               <ListItemIcon>
-                <CheckCircle style={{color: "#B1ECE2" }}/>
+              <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
               </ListItemIcon>
               <ListItemText primary="Mexico" primaryTypographyProps={{color:'primary'}} secondary="All systems nominal" secondaryTypographyProps={{color:'secondary'}}/>
               {open ? <ExpandLess /> : <ExpandMore />}
@@ -991,19 +1088,25 @@ export default function Home({ allPostsData }, props) {
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 1 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 2 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 3 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}} />
                 </ListItem>
@@ -1012,7 +1115,9 @@ export default function Home({ allPostsData }, props) {
             
             <ListItem button onClick={handleClick}>
               <ListItemIcon>
-                <CheckCircle style={{color: "#B1ECE2" }}/>
+              <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
               </ListItemIcon>
               <ListItemText primary="Europe" secondary="All systems nominal" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
               {open ? <ExpandLess /> : <ExpandMore />}
@@ -1021,19 +1126,25 @@ export default function Home({ allPostsData }, props) {
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 1 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 2 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 3 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
@@ -1042,7 +1153,9 @@ export default function Home({ allPostsData }, props) {
 
             <ListItem button onClick={handleClick}>
               <ListItemIcon>
-                <CheckCircle style={{color: "#B1ECE2" }}/>
+              <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
               </ListItemIcon>
               <ListItemText primary="United States" secondary="All systems nominal" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
               {open ? <ExpandLess /> : <ExpandMore />}
@@ -1051,19 +1164,25 @@ export default function Home({ allPostsData }, props) {
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 1 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 2 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}}/>
                 </ListItem>
                 <ListItem button className={classes.nested}>
                   <ListItemIcon>
-                    <CheckCircle style={{color: "#B1ECE2" }}/>
+                  <ThemeProvider theme={theme}>
+                    <CheckCircle color='primary'/>
+                    </ThemeProvider>
                   </ListItemIcon>
                   <ListItemText primary="System 3 is available" primaryTypographyProps={{color:'primary'}} secondaryTypographyProps={{color:'secondary'}} />
                 </ListItem>

@@ -13,7 +13,7 @@ export default function Copyright() {
     <Typography variant="body2" align="center" >
       {'Copyright '}
       <Router>
-      <Button startIcon={<CopyrightIcon />} variant='text' style={{borderColor: '#7E9EF5', color: "#FFFFFF" }} component={RouterLink} to="/">Elavon</Button>
+      <Button startIcon={<CopyrightIcon />} variant='text' colo='primary' component={RouterLink} to="/">Elavon</Button>
       </Router>
       {' '}
       {new Date().getFullYear()}
