@@ -5,7 +5,7 @@ export default initAuth0({
   clientId: 'a5gj4Gifg1CAc8HvHhjD9EBa7c2p77jD',
   clientSecret: 'xOiyqYaveMYLm6AoIOGR8U4AiGbOIsmht-K0EGd_88IwjkvI8RITXNNRUbKuc2bh',
   scope: 'openid profile',
-  redirectUri: 'https://system-status.vercel.app//api/callback',
+  redirectUri: 'https://system-status.vercel.app/api/callback',
   postLogoutRedirectUri: 'https://system-status.vercel.app/',
   session: {
     // The secret used to encrypt the cookie.
