@@ -99,7 +99,8 @@ import UpdateIcon from '@material-ui/icons/Update';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import BugReportIcon from '@material-ui/icons/BugReport';  
 import { blue } from '@material-ui/core/colors';
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 
 
 function Alert(props) {
@@ -253,7 +254,7 @@ export default function Home({ allPostsData }, props) {
 
   //dark mode stuff
 
-  const [darkState, setDarkState] = React.useState('light');
+  const [darkState, setDarkState] = useState(true);
   const [color, setColor] = React.useState('dark');
 
   const handleChange1 = (event) => {
@@ -733,12 +734,30 @@ export default function Home({ allPostsData }, props) {
         </Typography>
         <br/>
         <br/>
-        </ThemeProvider>
         
+        <Typography color='primary' variant='body1'>Auth0 Testing</Typography>
+        <br/>
+        </ThemeProvider>
+        <Link
+            href="/api/login"
+            passHref>
+            <Button startIcon={<VpnKeyIcon />} variant='text' style={{borderColor: 'primary', color: "primary" }}>Login</Button>
+        </Link>
+        <br/>
+        <Link
+            href="/api/logout"
+            passHref>
+            <Button startIcon={<ExitToAppIcon />} variant='text' style={{borderColor: 'primary', color: "primary" }}>Logout</Button>
+        </Link>
       <br/>
+      <Link
+            href="/api/me"
+            passHref>
+            <Button startIcon={<AccountCircle />} variant='text' style={{borderColor: 'primary', color: "primary" }}>Profile</Button>
+        </Link>
       <br/>
-
-
+      <br/>              
+      <br/>  
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
       <Grid container spacing={1} direction='row' alignItems='center' >

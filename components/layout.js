@@ -269,7 +269,7 @@ export default function Layout({ children, home }, props) {
     setAnchorEl(null);
   };
 
-  const [darkState, setDarkState] = useState(false);
+  const [darkState, setDarkState] = useState(true);
   const palletType = darkState ? "dark" : "light";
   const mainPrimaryColor = darkState ? '#FFF': '#1A1B36';
   const mainSecondaryColor = darkState ? '#FFF' : '#1A1B36';
