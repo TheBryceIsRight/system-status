@@ -35,14 +35,11 @@ const useStyles = makeStyles((theme) => ({
 
 function ProfileCard({ user }) {
     return (
-      <>
-        <h1>Profile</h1>
-  
+      <>  
         <div>
-          <h3>Profile (client rendered)</h3>
+          <h2>Name: {user.name}</h2>  
           <img src={user.picture} alt="user picture" />
-          <p>nickname: {user.nickname}</p>
-          <p>name: {user.name}</p>
+          <h2>Nickname: {user.nickname}</h2>
         </div>
       </>
     )
@@ -74,7 +71,7 @@ function Profile(props) {
         <ThemeProvider theme={responsiveTheme}>
           <Typography variant='h1'>{loading ? <Skeleton /> : 'Profile'}</Typography>
         </ThemeProvider>
-    
+        <br/>
       {loading ? <>Loading...</> : <ProfileCard user={user} />}
     
   
