@@ -451,11 +451,20 @@ export default function Home({ allPostsData }, props) {
       onClose={handleMenuClose}
       >
       <Link
+          href="/api/login"
+          passHref>
+          <MenuItem>Login</MenuItem>
+      </Link>
+      <Link
           href="/profile"
           passHref>
           <MenuItem>Profile</MenuItem>
       </Link>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <Link
+          href="/api/logout"
+          passHref>
+          <MenuItem>Logout</MenuItem>
+      </Link>
       </Menu>
   );
 
@@ -737,24 +746,9 @@ export default function Home({ allPostsData }, props) {
         </Typography>
         <br/>
         <br/>
-        
-        <Typography color='primary' variant='body1'>Auth0 Testing</Typography>
-        <br/>
         </ThemeProvider>
-        <Link
-            href="/api/login"
-            passHref>
-            <Button startIcon={<VpnKeyIcon />} variant='text' style={{borderColor: 'primary', color: "primary" }}>Login</Button>
-        </Link>
-        <br/>
-        <Link
-            href="/api/logout"
-            passHref>
-            <Button startIcon={<ExitToAppIcon />} variant='text' style={{borderColor: 'primary', color: "primary" }}>Logout</Button>
-        </Link>
-
-      <br/>
-      <br/>              
+        
+           
       <br/>  
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>

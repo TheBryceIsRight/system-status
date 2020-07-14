@@ -359,11 +359,20 @@ export default function Layout({ children, home }, props) {
       >
 
       <Link
+          href="/api/login"
+          passHref>
+          <MenuItem>Login</MenuItem>
+      </Link>
+      <Link
           href="/profile"
           passHref>
           <MenuItem>Profile</MenuItem>
       </Link>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <Link
+          href="/api/logout"
+          passHref>
+          <MenuItem>Logout</MenuItem>
+      </Link>
       </Menu>
   );
 
