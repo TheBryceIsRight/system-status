@@ -358,7 +358,11 @@ export default function Layout({ children, home }, props) {
       onClose={handleMenuClose}
       >
 
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <Link
+          href="/profile"
+          passHref>
+          <MenuItem>Profile</MenuItem>
+      </Link>
       <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
       </Menu>
   );

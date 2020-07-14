@@ -450,8 +450,11 @@ export default function Home({ allPostsData }, props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
       >
-
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <Link
+          href="/profile"
+          passHref>
+          <MenuItem>Profile</MenuItem>
+      </Link>
       <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
       </Menu>
   );
