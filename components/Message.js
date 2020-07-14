@@ -10,7 +10,7 @@ import paw from "../public/paw";
 
 const styles = theme => ({
   info: {
-    background: "#B0ECFE",
+    background: "#070F45",
   },
   text: {
     padding: 0,

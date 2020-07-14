@@ -37,9 +37,6 @@ function handleClick(event) {
 
 function LineChart(props) {
     const { loading = false } = props;
-    const DynamicComponentWithNoSSR = dynamic(() => import('../components/map' ), {
-        ssr: false
-      });
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleClick = () => {

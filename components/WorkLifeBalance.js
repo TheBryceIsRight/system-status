@@ -53,7 +53,7 @@ const styles = theme => ({
     margin: "24 24"
   },
   text: {
-    color: "#383a40",
+    color: "white",
     fontFamily: "'Roboto', sans-serif",
     fontSize: 14,
     fontWeight: 400
