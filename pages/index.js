@@ -752,12 +752,7 @@ export default function Home({ allPostsData }, props) {
             passHref>
             <Button startIcon={<ExitToAppIcon />} variant='text' style={{borderColor: 'primary', color: "primary" }}>Logout</Button>
         </Link>
-      <br/>
-      <Link
-            href="/api/me"
-            passHref>
-            <Button startIcon={<AccountCircle />} variant='text' style={{borderColor: 'primary', color: "primary" }}>Profile</Button>
-        </Link>
+
       <br/>
       <br/>              
       <br/>  
