@@ -57,10 +57,10 @@ const StyledTableCell = withStyles((theme) => ({
       },
     head: {
     backgroundColor: '#1A1B36',
-    color: theme.palette.common.white,
     },
     body: {
       fontSize: 14,
+      color: 'white',
     },
 }))(TableCell);
 
@@ -83,6 +83,12 @@ const StyledTableRow = withStyles((theme) => ({
 const StyledPaginationRow = withStyles((theme) => ({
     root: {
       backgroundColor: '#1A1B36',
+    },
+    body: {
+      color: 'white',
+    },
+    caption: {
+      color: 'white',
     },
   }))(TableRow);
 
@@ -294,7 +300,7 @@ function TablePaginationActions(props) {
             <StyledPaginationRow>
               <TablePagination
                 style = 
-                {{ borderBottom: 'none'}}
+                {{ borderBottom: 'none' , color: 'white'}}
                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                 colSpan={4}
                 count={rows.length}
