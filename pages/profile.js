@@ -33,6 +33,21 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+function ProfileCard({ user }) {
+    return (
+      <>
+        <h1>Profile</h1>
+  
+        <div>
+          <h3>Profile (client rendered)</h3>
+          <img src={user.picture} alt="user picture" />
+          <p>nickname: {user.nickname}</p>
+          <p>name: {user.name}</p>
+        </div>
+      </>
+    )
+  };
+
 function Profile(props) {
     const { user, loading } = useFetchUser({ required: true });
 
@@ -59,14 +74,10 @@ function Profile(props) {
         <ThemeProvider theme={responsiveTheme}>
           <Typography variant='h1'>{loading ? <Skeleton /> : 'Profile'}</Typography>
         </ThemeProvider>
-
-        <div>
-        <img src={user.picture} alt="user picture" />
-        <p>nickname: {user.nickname}</p>
-        <p>name: {user.name}</p>
-      </div>
-        <br/>
-        <br/>
+    
+      {loading ? <>Loading...</> : <ProfileCard user={user} />}
+    
+  
         
     </Layout>
 }
