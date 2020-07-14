@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 function Profile(props) {
     const { user, loading } = useFetchUser({ required: true });
 
-    const { loading = false } = props;
     const classes = useStyles();
 
     return <Layout>
