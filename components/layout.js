@@ -85,9 +85,6 @@ const StyledRating = withStyles({
   },
   iconHover: {
     color: '#73D6F9',
-  },
-  value: {
-    color: 'primary'
   }
 })(Rating);
 
@@ -268,7 +265,7 @@ export default function Layout({ children, home }, props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const [color, setColor] = React.useState(true);
   const [darkState, setDarkState] = useState(true);
   const palletType = darkState ? "dark" : "light";
   const mainPrimaryColor = darkState ? '#FFF': '#1A1B36';
@@ -309,6 +306,40 @@ export default function Layout({ children, home }, props) {
 
   darkTheme = responsiveFontSizes(darkTheme);
 
+  const theme = React.useMemo(() => {
+    if (color === true) {
+      return createMuiTheme({
+        palette: {
+          primary: {
+            main: '#FFFFFF',
+            contrastText: '#B1ECE2',
+            borderColor: '#B1ECE2',
+          },
+          secondary: {
+            main: '#7E9EF5',
+            contrastText: '#1A1B36',
+          },
+        },
+      });
+    }
+    if (color === false) {
+      return createMuiTheme({
+        palette: {
+          primary: {
+            main: '#2F8A6F',
+            contrastText: '#2F8A6F',
+            borderColor: '#2F8A6F',
+          },
+          secondary: {
+            main: '#1A1B36',
+            contrastText: '#fff',
+          },
+        },
+      });
+    }
+    return createMuiTheme();
+    }, [color]);
+
   const classes = useStyles();
   const classes1 = useStyle1();
   const classes2 = useStyles2();
@@ -318,6 +349,7 @@ export default function Layout({ children, home }, props) {
 
   const handleThemeChange = () => {
     setDarkState(!darkState);
+    setColor(!color);
   };
 
   {/*Top App Bar stuff */}
@@ -357,22 +389,27 @@ export default function Layout({ children, home }, props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
       >
-
+      <MenuItem>
       <Link
           href="/api/login"
           passHref>
-          <MenuItem>Login</MenuItem>
+          <a>Login</a>
       </Link>
+      </MenuItem>
+      <MenuItem>
       <Link
-          href="/profile"
+          href="/api/profile"
           passHref>
-          <MenuItem>Profile</MenuItem>
+          <a>Profile</a>
       </Link>
+      </MenuItem>
+      <MenuItem>
       <Link
           href="/api/logout"
           passHref>
-          <MenuItem>Logout</MenuItem>
+          <a>Logout</a>
       </Link>
+      </MenuItem>
       </Menu>
   );
 

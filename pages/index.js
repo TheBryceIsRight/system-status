@@ -450,21 +450,27 @@ export default function Home({ allPostsData }, props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
       >
+      <MenuItem>
       <Link
           href="/api/login"
           passHref>
-          <MenuItem>Login</MenuItem>
+          <a>Login</a>
       </Link>
+      </MenuItem>
+      <MenuItem>
       <Link
-          href="/profile"
+          href="/api/profile"
           passHref>
-          <MenuItem>Profile</MenuItem>
+          <a>Profile</a>
       </Link>
+      </MenuItem>
+      <MenuItem>
       <Link
           href="/api/logout"
           passHref>
-          <MenuItem>Logout</MenuItem>
+          <a>Logout</a>
       </Link>
+      </MenuItem>
       </Menu>
   );
 
